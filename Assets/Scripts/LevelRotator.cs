@@ -2,18 +2,31 @@ using UnityEngine;
 
 public class LevelRotator : MonoBehaviour
 {
-    private float _horizontalRotate;
-    private float _verticalRotate;
-    private float _rotateSpeed = 0.2f;   
+    private float _horizontalInput;
+    private float _verticalInput;
+    private float _rotateSpeed = 50.0f;
+    Rigidbody levelRigidbody;
+
+    private void Awake()
+    {
+        levelRigidbody = GetComponent<Rigidbody>();
+    }
 
     private void Update()
     {
-        _horizontalRotate = Input.GetAxisRaw("Horizontal");
-        _verticalRotate = Input.GetAxisRaw("Vertical");
+        _horizontalInput = Input.GetAxisRaw("Horizontal");
+        _verticalInput = Input.GetAxisRaw("Vertical");     
+    }
 
-        Vector3 startAngles = transform.localEulerAngles; 
+    private void FixedUpdate()
+    {
+        Vector3 rotationInput = new Vector3(_horizontalInput, 0f, _verticalInput);  
 
-        transform.Rotate(_horizontalRotate * _rotateSpeed, 0, 0);
-        transform.Rotate(0, 0, _verticalRotate * _rotateSpeed);                            
+        if (rotationInput.sqrMagnitude < 0.0001f)
+            return;
+
+        Quaternion deltaRotation = Quaternion.Euler(rotationInput * _rotateSpeed * Time.fixedDeltaTime);
+
+        levelRigidbody.MoveRotation(levelRigidbody.rotation * deltaRotation);
     }
 }
