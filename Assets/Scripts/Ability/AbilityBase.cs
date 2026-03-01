@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class AbilityBase
+public abstract class AbilityBase : MonoBehaviour
 {
-    public abstract int UseAbility();
+    public abstract void UseAbility(Player player);
 }

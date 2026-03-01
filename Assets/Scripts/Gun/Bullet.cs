@@ -3,8 +3,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] GameObject _deadVFX;
-    private float _speed = 5;
-    private float _timeToDeath = 2f;
+    [SerializeField] private float _speed = 10;
+    [SerializeField] private float _timeToDeath = 1f;
 
     public void Awake()
     {

@@ -1,61 +1,59 @@
-using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private Gun _gun;
-    [SerializeField] private ItemAbilityController _itemAbilityController;
     [SerializeField] private PlayerTransform _playerTransform;
+    [SerializeField] private ItemAbilityController _itemAbilityController;
 
     private int _health = 100;
-    private int _speed = 5;   
-    private AbilityBase _currentAbility;    
+    private int _speed = 2;
 
     private void Update()
     {
-        if (_itemAbilityController._ability != null)   
+        if (Input.GetKeyDown(KeyCode.F) && _itemAbilityController.Ability != null)
         {
-            _currentAbility = _itemAbilityController._ability;
-            _itemAbilityController._ability = null;   
+            _itemAbilityController.Ability.UseAbility(this);
+            DestroyAbility();
         }
 
-        else if (Input.GetKeyDown(KeyCode.F) && _currentAbility is AbilityHealth)       
-        {          
-            int result = _currentAbility.UseAbility();                            
-            _health += result;
-
-            Other(_health);
-            Debug.Log($"Здоровье: {_health}");
-        }
-
-        else if(Input.GetKeyDown(KeyCode.F) && _currentAbility is AbilitySpeed)       
+        if (Input.GetKeyDown(KeyCode.F) && _itemAbilityController.AbilityObject == null)
         {
-            int result = _currentAbility.UseAbility();
-            _speed = Convert.ToInt32(_playerTransform.Speed += result);
-
-            Other(_speed);
-            Debug.Log($"Скорость: {_speed}");
-        }
-
-        else if(Input.GetKeyDown(KeyCode.F) && _currentAbility is AbilityGun)
-        {
-            int result = _currentAbility.UseAbility();
-            _gun.CanShoot = result;
-
-            Other(_gun.CanShoot);
-            Debug.Log("Выстрел!");
-        }
-
-        else if (Input.GetKeyDown(KeyCode.F) && _currentAbility is null)
-        {
-            Debug.Log("Нет абилки!");
+            PrintInfo("Нет абилки!");
         }
     }
 
-    private void Other(int result)
+    public void Shoot()
     {
-        _itemAbilityController._isParent = false;       
-        _currentAbility = null;
-        Destroy(_itemAbilityController._abilityObject); 
+        _gun.Shoot();
+        PrintInfo($"Выстрел!");
+    }
+
+    public void AddHealth(int health)
+    {
+        _health += health;
+        PrintInfo($"Здоровье увеличено: {_health}");
+    }
+
+    public void AddSpeed(int speed)
+    {
+        _speed += speed;
+        PrintInfo($"Скорость увеличена: {_speed}");
+    }
+
+    private void DestroyAbility()
+    {
+        _itemAbilityController.IsParent = false;
+        Destroy(_itemAbilityController.AbilityObject);
+    }
+
+    public float GetSpeed()
+    {
+        return _speed;
+    }
+
+    private void PrintInfo(string info)
+    {
+        Debug.Log(info);
     }
 }

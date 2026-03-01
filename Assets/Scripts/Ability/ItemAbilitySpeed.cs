@@ -1,18 +1,13 @@
 using UnityEngine;
 
-public class ItemAbilitySpeed : MonoBehaviour
-{                                               
-    [SerializeField] private GameObject _deadEffect;
-    private AbilityBase _abilitySpeed;
+public class ItemAbilitySpeed : AbilityBase
+{
+    [SerializeField] private int Speed = 2;
+    [SerializeField] private GameObject _deadEffect;    
 
-    private void Awake()
-    {
-        _abilitySpeed = new AbilitySpeed();
-    }
-
-    public AbilityBase GetAbility()
-    {
-        return _abilitySpeed;
+    public override void UseAbility(Player player)
+    {    
+        player.AddSpeed(Speed);
     }
 
     private void OnDestroy()

@@ -1,18 +1,13 @@
 using UnityEngine;
 
-public class ItemAbilityHealth : MonoBehaviour
-{                                               
-    [SerializeField] private GameObject _deadEffect;
-    private AbilityBase _abilityHealth;
+public class ItemAbilityHealth : AbilityBase
+{
+    [SerializeField] private int Health = 10;
+    [SerializeField] private GameObject _deadEffect;    
 
-    private void Awake()
-    {
-        _abilityHealth = new AbilityHealth();
-    }
- 
-    public AbilityBase GetAbility()
-    {
-        return _abilityHealth;
+    public override void UseAbility(Player player)
+    {          
+        player.AddHealth(Health);    
     }
 
     private void OnDestroy()

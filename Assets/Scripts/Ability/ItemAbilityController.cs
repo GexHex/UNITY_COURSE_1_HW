@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class ItemAbilityController : MonoBehaviour
 {
-    [SerializeField] private ItemAbilityPointMarker _itemPoint;    
-    public AbilityBase _ability;                                    
-    public GameObject _abilityObject;
-    public bool EnableParent;
-    public bool _isParent;
+    public AbilityBase Ability { get; private set; }                                    
+    public GameObject AbilityObject { get; set; }   
+    public bool IsParent { get; set; }
+
+    [SerializeField] private ItemAbilityPointMarker _itemPoint;
 
     private void Awake()
     {
@@ -15,41 +15,24 @@ public class ItemAbilityController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (_isParent == false)
+        if (IsParent == false)
         {
-            _abilityObject = other.gameObject;
+            AbilityObject = other.gameObject;
             
-            if (other.TryGetComponent<ItemAbilityHealth>(out var itemAbilityHealth))
+            if (other.TryGetComponent<AbilityBase>(out var ability))
             {
-                if (itemAbilityHealth != null && _isParent == false)
+                if (ability != null && IsParent == false)
                 {
-                    _isParent = true;
-                    _ability = itemAbilityHealth.GetAbility();                                                  
+                    IsParent = true;
+                    Ability = ability;                                                  
                 }
-            }
-
-            if (other.TryGetComponent<ItemAbilitySpeed>(out var itemAbilitySpeed))
-            {
-                if (itemAbilitySpeed != null && _isParent == false)
-                {
-                    _isParent = true;
-                    _ability = itemAbilitySpeed.GetAbility();                                     
-                }
-            }
-            if (other.TryGetComponent<ItemAbilityGun>(out var itemAbilityGun))
-            {
-                if (itemAbilityGun != null && _isParent == false)
-                {
-                    _isParent = true;
-                    _ability = itemAbilityGun.GetAbility();                                       
-                }
-            }
+            }          
         }
     }
 
     private void Update()
     {
-        if (_isParent)
-            _abilityObject.transform.position = _itemPoint.transform.position;
+        if (IsParent)
+            AbilityObject.transform.position = _itemPoint.transform.position;
     }
 }

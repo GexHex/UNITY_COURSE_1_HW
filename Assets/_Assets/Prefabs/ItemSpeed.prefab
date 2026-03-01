@@ -119,5 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2038f7d0900f6d44c8b267332d8492f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deadEffect: {fileID: 1887159375177322, guid: 3bc5000d25fb154448f96dd3c713e545,
+  Speed: 2
+  _deadEffect: {fileID: 1773673519030548, guid: 6e3db7afa59301e48bc3999ec41f1410,
     type: 3}

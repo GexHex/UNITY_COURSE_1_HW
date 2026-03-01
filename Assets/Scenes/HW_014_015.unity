@@ -172,11 +172,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a8a1f062b2470744a4394c340ac11e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnPoints: []
   _items:
-  - {fileID: 2587547290755627955, guid: b9dce415113adf24abcb8f25a535816f, type: 3}
-  - {fileID: 2587547290755627955, guid: d8d317fa1d9051247b0faf07d7ee7ce5, type: 3}
-  - {fileID: 2587547290755627955, guid: 3ca6a1f74ee94e041a4a0cb562f549c4, type: 3}
+  - {fileID: 1087738120838440693, guid: b9dce415113adf24abcb8f25a535816f, type: 3}
+  - {fileID: 8602769525990926321, guid: d8d317fa1d9051247b0faf07d7ee7ce5, type: 3}
+  - {fileID: 400958967855813796, guid: 3ca6a1f74ee94e041a4a0cb562f549c4, type: 3}
 --- !u!1 &326975226
 GameObject:
   m_ObjectHideFlags: 0
@@ -1568,7 +1567,6 @@ GameObject:
   - component: {fileID: 660395148}
   - component: {fileID: 660395150}
   - component: {fileID: 660395147}
-  - component: {fileID: 660395151}
   - component: {fileID: 660395149}
   m_Layer: 0
   m_Name: Player
@@ -1589,8 +1587,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0770ffd82c601c42aa726f9c312d1be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2
+  _speed: 0
   _rotationSpeed: 500
+  _player: {fileID: 660395150}
 --- !u!4 &660395148
 Transform:
   m_ObjectHideFlags: 0
@@ -1647,22 +1646,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gun: {fileID: 1287551330}
-  _itemAbilityController: {fileID: 1795934947}
   _playerTransform: {fileID: 660395147}
---- !u!114 &660395151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 660395146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b355189ac1d16e84db329f677468f241, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <XInput>k__BackingField: 0
-  <YInput>k__BackingField: 0
+  _itemAbilityController: {fileID: 1795934947}
 --- !u!1 &666073597
 GameObject:
   m_ObjectHideFlags: 0
@@ -2072,7 +2057,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bullet: {fileID: 2343726994662762206, guid: fffdb9be7759f2a45ab2c38cd9e1cd0e, type: 3}
   spawnPoint: {fileID: 726396406}
-  CanShoot: 0
 --- !u!1001 &1327954915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2413,7 +2397,7 @@ GameObject:
   - component: {fileID: 1795934945}
   - component: {fileID: 1795934946}
   m_Layer: 0
-  m_Name: ItemController
+  m_Name: ItemAbilityController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2497,10 +2481,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 113204797e5c5454f86fe0347be58d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemPoint: {fileID: 2045712630}
-  _abilityObject: {fileID: 0}
+  Ability: {fileID: 0}
+  AbilityObject: {fileID: 0}
   EnableParent: 0
-  _isParent: 0
+  IsParent: 0
+  _itemPoint: {fileID: 2045712630}
 --- !u!1 &2045712628
 GameObject:
   m_ObjectHideFlags: 0
