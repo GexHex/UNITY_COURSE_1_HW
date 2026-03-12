@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MobSpawner : MonoBehaviour
-{  
+{
+    [SerializeField] Player _player;
     private List<MobStrategyConfigurator> _allMobs = new List<MobStrategyConfigurator>();
 
     private void Awake()
@@ -15,7 +16,7 @@ public class MobSpawner : MonoBehaviour
     {
         foreach (MobStrategyConfigurator mob in _allMobs)
         {
-            mob.Add();            
+            mob.Add(_player);            
         }    
     }
 }

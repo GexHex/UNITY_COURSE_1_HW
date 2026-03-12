@@ -293,14 +293,29 @@ PrefabInstance:
       objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _deadVFX
+      value: 
+      objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: AggroType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _idleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
+      propertyPath: _aggroType
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: _mobPrefab
       value: 
-      objectReference: {fileID: 7171613112161291027, guid: cffaef387924874469a0a798c0af0a83,
+      objectReference: {fileID: 7595478314378412640, guid: cffaef387924874469a0a798c0af0a83,
         type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
@@ -625,14 +640,29 @@ PrefabInstance:
       objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _deadVFX
+      value: 
+      objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: AggroType
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _idleType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
+      propertyPath: _aggroType
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: _mobPrefab
       value: 
-      objectReference: {fileID: 7171613112161291027, guid: cffaef387924874469a0a798c0af0a83,
+      objectReference: {fileID: 7595478314378412640, guid: cffaef387924874469a0a798c0af0a83,
         type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
@@ -864,14 +894,29 @@ PrefabInstance:
       objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _deadVFX
+      value: 
+      objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: AggroType
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _idleType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
+      propertyPath: _aggroType
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: _mobPrefab
       value: 
-      objectReference: {fileID: 7171613112161291027, guid: cffaef387924874469a0a798c0af0a83,
+      objectReference: {fileID: 7595478314378412640, guid: cffaef387924874469a0a798c0af0a83,
         type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
@@ -985,14 +1030,29 @@ PrefabInstance:
       objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _deadVFX
+      value: 
+      objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: AggroType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _idleType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
+      propertyPath: _aggroType
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: _mobPrefab
       value: 
-      objectReference: {fileID: 7171613112161291027, guid: cffaef387924874469a0a798c0af0a83,
+      objectReference: {fileID: 7595478314378412640, guid: cffaef387924874469a0a798c0af0a83,
         type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
@@ -1106,14 +1166,29 @@ PrefabInstance:
       objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _deadVFX
+      value: 
+      objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: AggroType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _idleType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
+      propertyPath: _aggroType
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: _mobPrefab
       value: 
-      objectReference: {fileID: 7171613112161291027, guid: cffaef387924874469a0a798c0af0a83,
+      objectReference: {fileID: 7595478314378412640, guid: cffaef387924874469a0a798c0af0a83,
         type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
@@ -1227,14 +1302,29 @@ PrefabInstance:
       objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _deadVFX
+      value: 
+      objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: AggroType
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _idleType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
+      propertyPath: _aggroType
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: _mobPrefab
       value: 
-      objectReference: {fileID: 7171613112161291027, guid: cffaef387924874469a0a798c0af0a83,
+      objectReference: {fileID: 7595478314378412640, guid: cffaef387924874469a0a798c0af0a83,
         type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
@@ -1348,14 +1438,29 @@ PrefabInstance:
       objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _deadVFX
+      value: 
+      objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: AggroType
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _idleType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
+      propertyPath: _aggroType
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: _mobPrefab
       value: 
-      objectReference: {fileID: 7171613112161291027, guid: cffaef387924874469a0a798c0af0a83,
+      objectReference: {fileID: 7595478314378412640, guid: cffaef387924874469a0a798c0af0a83,
         type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
@@ -1549,14 +1654,29 @@ PrefabInstance:
       objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _deadVFX
+      value: 
+      objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: AggroType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _idleType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
+      propertyPath: _aggroType
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: _mobPrefab
       value: 
-      objectReference: {fileID: 7171613112161291027, guid: cffaef387924874469a0a798c0af0a83,
+      objectReference: {fileID: 7595478314378412640, guid: cffaef387924874469a0a798c0af0a83,
         type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
@@ -1811,7 +1931,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 926839569}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b349c139beea5aa46b4e01dd19223c7f, type: 3}
+  m_Script: {fileID: 11500000, guid: cb8107e1fa52bb646a337a0962ae7adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &967304751
@@ -1949,7 +2069,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9c45efe06a925429772d9188969ccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _allTransform: []
 --- !u!4 &976395308
 Transform:
   m_ObjectHideFlags: 0
@@ -2069,14 +2188,29 @@ PrefabInstance:
       objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _deadVFX
+      value: 
+      objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: AggroType
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _idleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
+      propertyPath: _aggroType
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: _mobPrefab
       value: 
-      objectReference: {fileID: 7171613112161291027, guid: cffaef387924874469a0a798c0af0a83,
+      objectReference: {fileID: 7595478314378412640, guid: cffaef387924874469a0a798c0af0a83,
         type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
@@ -3075,14 +3209,29 @@ PrefabInstance:
       objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _deadVFX
+      value: 
+      objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: AggroType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _idleType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
+      propertyPath: _aggroType
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: _mobPrefab
       value: 
-      objectReference: {fileID: 7171613112161291027, guid: cffaef387924874469a0a798c0af0a83,
+      objectReference: {fileID: 7595478314378412640, guid: cffaef387924874469a0a798c0af0a83,
         type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
@@ -3344,14 +3493,29 @@ PrefabInstance:
       objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _deadVFX
+      value: 
+      objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: AggroType
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _idleType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
+      propertyPath: _aggroType
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: _mobPrefab
       value: 
-      objectReference: {fileID: 7171613112161291027, guid: cffaef387924874469a0a798c0af0a83,
+      objectReference: {fileID: 7595478314378412640, guid: cffaef387924874469a0a798c0af0a83,
         type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
@@ -3465,14 +3629,29 @@ PrefabInstance:
       objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _deadVFX
+      value: 
+      objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: AggroType
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _idleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
+      propertyPath: _aggroType
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: _mobPrefab
       value: 
-      objectReference: {fileID: 7171613112161291027, guid: cffaef387924874469a0a798c0af0a83,
+      objectReference: {fileID: 7595478314378412640, guid: cffaef387924874469a0a798c0af0a83,
         type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
@@ -3664,14 +3843,29 @@ PrefabInstance:
       objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _deadVFX
+      value: 
+      objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: AggroType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _idleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
+      propertyPath: _aggroType
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: _mobPrefab
       value: 
-      objectReference: {fileID: 7171613112161291027, guid: cffaef387924874469a0a798c0af0a83,
+      objectReference: {fileID: 7595478314378412640, guid: cffaef387924874469a0a798c0af0a83,
         type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
@@ -3751,6 +3945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d13e0e6155797443bbe8ed0a8a56e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 926839579}
 --- !u!1 &1576956631
 GameObject:
   m_ObjectHideFlags: 0
@@ -3878,14 +4073,29 @@ PrefabInstance:
       objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _deadVFX
+      value: 
+      objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: AggroType
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _idleType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
+      propertyPath: _aggroType
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: _mobPrefab
       value: 
-      objectReference: {fileID: 7171613112161291027, guid: cffaef387924874469a0a798c0af0a83,
+      objectReference: {fileID: 7595478314378412640, guid: cffaef387924874469a0a798c0af0a83,
         type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
@@ -4147,14 +4357,29 @@ PrefabInstance:
       objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _deadVFX
+      value: 
+      objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: AggroType
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _idleType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
+      propertyPath: _aggroType
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: _mobPrefab
       value: 
-      objectReference: {fileID: 7171613112161291027, guid: cffaef387924874469a0a798c0af0a83,
+      objectReference: {fileID: 7595478314378412640, guid: cffaef387924874469a0a798c0af0a83,
         type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
@@ -4268,14 +4493,29 @@ PrefabInstance:
       objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _deadVFX
+      value: 
+      objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: AggroType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _idleType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
+      propertyPath: _aggroType
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: _mobPrefab
       value: 
-      objectReference: {fileID: 7171613112161291027, guid: cffaef387924874469a0a798c0af0a83,
+      objectReference: {fileID: 7595478314378412640, guid: cffaef387924874469a0a798c0af0a83,
         type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
@@ -4389,14 +4629,29 @@ PrefabInstance:
       objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _deadVFX
+      value: 
+      objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: AggroType
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _idleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
+      propertyPath: _aggroType
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: _mobPrefab
       value: 
-      objectReference: {fileID: 7171613112161291027, guid: cffaef387924874469a0a798c0af0a83,
+      objectReference: {fileID: 7595478314378412640, guid: cffaef387924874469a0a798c0af0a83,
         type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
@@ -4551,6 +4806,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnPoint_1
       objectReference: {fileID: 0}
+    - target: {fileID: 6352954133245443960, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
       propertyPath: _mob
@@ -4579,14 +4839,29 @@ PrefabInstance:
       objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _deadVFX
+      value: 
+      objectReference: {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: AggroType
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}
+      propertyPath: _idleType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
+      propertyPath: _aggroType
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
+        type: 3}
       propertyPath: _mobPrefab
       value: 
-      objectReference: {fileID: 7171613112161291027, guid: cffaef387924874469a0a798c0af0a83,
+      objectReference: {fileID: 7595478314378412640, guid: cffaef387924874469a0a798c0af0a83,
         type: 3}
     - target: {fileID: 6943957012328390594, guid: 134b7da5e24608b46b2276ce5dd98aa5,
         type: 3}

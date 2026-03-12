@@ -3,7 +3,12 @@ using UnityEngine;
 
 public class MobCheckPoints : MonoBehaviour
 {
-    public List<Transform> _allTransform = new List<Transform>();
+    private List<Transform> _allTransform = new List<Transform>();
+
+    public List<Transform> AllTransform()
+    {
+        return _allTransform;
+    }
 
     private void Awake()
     {
