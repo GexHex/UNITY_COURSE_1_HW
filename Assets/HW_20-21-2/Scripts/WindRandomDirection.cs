@@ -3,14 +3,14 @@ using UnityEngine;
 namespace GameShip
 {
     public class WindRandomDirection : MonoBehaviour
-    {
-        public Quaternion WindRotation { get; private set; }
+    {        
         [SerializeField] private float _minRandomeAngle = -180f;
         [SerializeField] private float _maxRandomeAngle = 180f;
         [SerializeField] private float _timeToChangeWindDirection = 3f;       
         [SerializeField] private float _rotateSpeed = 100f;
-        private float _time;
+        private float _time;        
         private Quaternion _windRandomDirection;
+        public Quaternion WindRotation { get; private set; }
 
         private void Awake()
         {
