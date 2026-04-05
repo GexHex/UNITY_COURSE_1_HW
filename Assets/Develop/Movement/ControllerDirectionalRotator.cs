@@ -1,21 +1,21 @@
 using UnityEngine;
 
-public class DirectionalRotator
+public class ControllerDirectionalRotator : IDirectionalRotatable
 {
     private Transform _transform;
     private float _rotationSpeed;
     private Vector3 _currentDirection;
 
-    public DirectionalRotator(Transform transform, float rotarionSpeed)
+    public ControllerDirectionalRotator(Transform transform, float rotarionSpeed)
     {
         _transform = transform;
         _rotationSpeed = rotarionSpeed;
     }
 
     public Quaternion CurrentRotation => _transform.rotation; 
-
-    public void SetInputDirection(Vector3 direction) => _currentDirection = direction;
-
+    
+    public void SetRotationDirection(Vector3 direction) => _currentDirection = direction;
+ 
     public void Update(float deltaTime)
     {
         if (_currentDirection.magnitude < 0.05f)

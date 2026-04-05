@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,14 +14,30 @@ public class NavMeshUtils
         return pathLenght;
     }
 
-    public static bool TryGetPath(Vector3 sourcePosition, Transform targetPosition, NavMeshQueryFilter queryFilter, NavMeshPath pathToTarget)
+    public static bool TryGetPath(Vector3 sourcePosition, Vector3 targetPosition, NavMeshQueryFilter queryFilter, NavMeshPath pathToTarget)
     {
-
-        if (NavMesh.CalculatePath(sourcePosition, targetPosition.position, queryFilter, pathToTarget) && pathToTarget.status != NavMeshPathStatus.PathInvalid)
+        if (NavMesh.CalculatePath(sourcePosition, targetPosition, queryFilter, pathToTarget) && pathToTarget.status != NavMeshPathStatus.PathInvalid)
         {         
             return true;
         }
 
         return false;
+    }
+
+    public static List<Vector3> GetRandomPoints(Vector3 center, float radius, int count)
+    {
+        List<Vector3> points = new();
+
+        while (points.Count < count)
+        {
+            Vector3 random = center + Random.insideUnitSphere * radius;
+
+            if (NavMesh.SamplePosition(random, out NavMeshHit hit, 2f, NavMesh.AllAreas))
+            {
+                points.Add(hit.position);
+            }
+        }
+
+        return points;
     }
 }

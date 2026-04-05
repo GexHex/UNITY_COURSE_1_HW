@@ -1,7 +1,10 @@
 using UnityEngine;
 
-public interface IDirectionalRotatable : ITransformPositon
+public interface IDirectionalRotatable
 {
     Quaternion CurrentRotation {  get; }
+
     void SetRotationDirection(Vector3 inputDirection);
+
+    void Update(float deltaTime);
 }

@@ -7,7 +7,7 @@ public class CharacterView : MonoBehaviour
     private readonly int _isRunningKey = Animator.StringToHash("IsRunning");
     private readonly int _isDeadKey = Animator.StringToHash("IsDead");
     private readonly int _isHitKey = Animator.StringToHash("Hit");
-    private float _tempCharacterHealth;
+    private int _tempCharacterHealth;
     private int _healthToChangeAnimation = 50;
 
     private void Awake()

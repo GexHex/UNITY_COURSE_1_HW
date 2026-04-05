@@ -1,20 +1,22 @@
 using UnityEngine;
 
-public class DirectionalMover
+public class ControllerDirectionalMoverCharacter : IDirectionalMovable
 {
     private CharacterController _characterController;
     private float _movementSpeed;
     private Vector3 _currentDirection;
 
-    public DirectionalMover(CharacterController characterController, float movementSpeed)
+    public ControllerDirectionalMoverCharacter(CharacterController characterController, float movementSpeed)
     {
         _characterController = characterController;
         _movementSpeed = movementSpeed;
     }
 
-    public Vector3 CurrentVelocity { get; private set; }
+    public Vector3 CurrentVelocity { get; set; }
 
-    public void SetInputDirection(Vector3 direction) => _currentDirection = direction;
+    public Vector3 Position => _characterController.transform.position;
+
+    public void SetMoveDirection(Vector3 inputDirection) => _currentDirection = inputDirection; 
 
     public void Update(float deltaTime)
     {

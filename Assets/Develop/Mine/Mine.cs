@@ -7,35 +7,54 @@ public class Mine : MonoBehaviour
     private float _mineDistanceDamage = 2f;
     private float _mineDistanceTrigger = 1f;
     private float _timeToExplosion = 1;
-    private bool _initializeExplosion;
+    private int _damageValue = 10;
+    private bool _isMineTriggered;
+    private bool _hasExploded;
 
-    public void ExplodeMine(Character character, Mine _mine, float deltaTime)
+    private void OnTriggerEnter(Collider other)
     {
-        Vector3 _distanceToCharacter = character.transform.position - _mine.transform.position;
-
-        if (_distanceToCharacter.magnitude <= _mineDistanceTrigger)
+        if (!_hasExploded && other.TryGetComponent<IDamageable>(out var entity))
         {
-            _initializeExplosion = true;
+            _isMineTriggered = true;
+        }
+    }
+
+    private void Update()
+    {
+        if (_isMineTriggered && _hasExploded == false)
+        {
+            MineTrigger();
+        }
+    }
+    public void MineTrigger()
+    {
+        _time += Time.deltaTime;
+
+        if (_time >= _timeToExplosion)
+        {
+            Explode();
+        }
+    }
+
+    public void Explode()
+    {
+        if (_hasExploded) return;
+        _hasExploded = true;
+
+        Collider[] _colliders = Physics.OverlapSphere(transform.position, _mineDistanceDamage);
+
+        foreach (Collider collider in _colliders)
+        {
+            IDamageable objectToDamage = collider.GetComponent<IDamageable>();
+
+            if (objectToDamage != null)
+                objectToDamage.TakeDamage(_damageValue);
         }
 
-        if (_initializeExplosion == true)
-        {
-            _mine._time += deltaTime;
+        PlayExplosionEffect();
+        ShowDamageRadius();
 
-            if (_mine._time > _timeToExplosion)
-            {
-                _mine._time = 0;
-                _mine.PlayExplosionEffect();
-                _mine.ShowDamageRadius();
-
-                Destroy(_mine.gameObject, 0.5f);
-
-                if (_distanceToCharacter.magnitude <= _mineDistanceDamage && character.Health > 0)
-                {
-                    character.TakeDamage(10);
-                }
-            }
-        }
+        Destroy(gameObject, 0.2f);
     }
 
     public void PlayExplosionEffect()
