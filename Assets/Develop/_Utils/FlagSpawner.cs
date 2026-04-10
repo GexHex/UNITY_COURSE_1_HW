@@ -3,20 +3,32 @@ using UnityEngine;
 public class FlagSpawner
 {
     private GameObject _flagPrefab;
+    private CameraRayHitPointService _cameraRayHitPointService;
+    private UserInput _userInput;
     private GameObject _flag;
     private Vector3 _flagPosition;
 
-    public FlagSpawner(GameObject flagPrefab)
+    public FlagSpawner(GameObject flagPrefab, CameraRayHitPointService cameraRayHitPointService, UserInput userInput)
     {
         _flagPrefab = flagPrefab;
+        _cameraRayHitPointService = cameraRayHitPointService;
+        _userInput = userInput;
     }
 
-    public void SetFlag(CameraRayHitPointService hitPointService)
+    public void Update()
     {
-        if (hitPointService == null)
+        if (_cameraRayHitPointService == null)
             return;
 
-        Vector3 newPosition = hitPointService.RayHitPoint;
+        if (_userInput.IsMouseDown())
+        {
+            SetFlag();
+        }        
+    }
+
+    public void SetFlag()
+    {
+        Vector3 newPosition = _cameraRayHitPointService.RayHitPoint;
 
         if (_flag == null)
         {

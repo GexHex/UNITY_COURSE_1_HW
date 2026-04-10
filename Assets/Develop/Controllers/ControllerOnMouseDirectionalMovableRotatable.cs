@@ -1,19 +1,18 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class ControllerCompositeOnMouseDirectionalMovableRotatable : ICompositeController
+public class ControllerOnMouseDirectionalMovableRotatable : ControllerBase
 {
-    private IDirectionalMovable _movable;
-    private IDirectionalRotatable _rotatable;
+    private DirectionalMover _movable;
+    private DirectionalRotator _rotatable;
 
     private NavMeshQueryFilter _queryFilter;
     private NavMeshPath _pathToTarget = new NavMeshPath();
     private CameraRayHitPointService _hitPointService;
 
     private Vector3 _target;
-    private bool _isEnableUpdateLogic;
 
-    public ControllerCompositeOnMouseDirectionalMovableRotatable(IDirectionalMovable movable, IDirectionalRotatable rotatable, NavMeshQueryFilter queryFilter, CameraRayHitPointService hitPoint)
+    public ControllerOnMouseDirectionalMovableRotatable(DirectionalMover movable, DirectionalRotator rotatable, NavMeshQueryFilter queryFilter, CameraRayHitPointService hitPoint)
     {
         _movable = movable;
         _rotatable = rotatable;
@@ -21,23 +20,13 @@ public class ControllerCompositeOnMouseDirectionalMovableRotatable : ICompositeC
         _hitPointService = hitPoint;
     }
 
-    public void Disable() => _isEnableUpdateLogic = false;
-
-    public void Enable() => _isEnableUpdateLogic = true;
-
-    public void Update(float deltaTime)
-    {
-        if (_isEnableUpdateLogic)
-            UpdateLogic(deltaTime);
-    }
-
-    public void StopMove()
+    public override void StopMove()
     {
         _movable.CurrentVelocity = new Vector3(0, 0, 0);
         _movable.SetMoveDirection(Vector3.zero);
     }
 
-    public void UpdateLogic(float deltaTime)
+    protected override void UpdateLogic(float deltaTime)
     {
         _target = _hitPointService.RayHitPoint;
 

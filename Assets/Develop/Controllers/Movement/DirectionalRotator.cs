@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class ControllerDirectionalRotator : IDirectionalRotatable
+public class DirectionalRotator
 {
     private Transform _transform;
     private float _rotationSpeed;
     private Vector3 _currentDirection;
 
-    public ControllerDirectionalRotator(Transform transform, float rotarionSpeed)
+    public DirectionalRotator(Transform transform, float rotarionSpeed)
     {
         _transform = transform;
         _rotationSpeed = rotarionSpeed;

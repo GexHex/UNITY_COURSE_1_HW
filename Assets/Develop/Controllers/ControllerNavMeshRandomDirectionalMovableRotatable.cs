@@ -1,13 +1,14 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class ControllerCompositeNavMeshRandomMove : ICompositeController
+public class ControllerNavMeshRandomDirectionalMovableRotatable : ControllerBase
 {
     public List<Vector3> _checkPoints { get; private set; }
 
-    private IDirectionalMovable _movable;
-    private IDirectionalRotatable _rotatable;
+    private DirectionalMover _movable;
+    private DirectionalRotator _rotatable;
 
     private Queue<Vector3> _checkPointsQueue = new Queue<Vector3>();
     private Vector3 _currentEnemyTarget;   
@@ -16,9 +17,8 @@ public class ControllerCompositeNavMeshRandomMove : ICompositeController
     private float _minDistanceToTarget = 0.3f;    
     private float _radius = 5;
     private int _checkpointsCount = 5;
-    private bool _isEnableUpdateLogic;
 
-    public ControllerCompositeNavMeshRandomMove(IDirectionalMovable movable, IDirectionalRotatable rotatable, NavMeshQueryFilter queryFilter)
+    public ControllerNavMeshRandomDirectionalMovableRotatable(DirectionalMover movable, DirectionalRotator rotatable, NavMeshQueryFilter queryFilter)
     {
         _movable = movable;
         _rotatable = rotatable;
@@ -27,17 +27,13 @@ public class ControllerCompositeNavMeshRandomMove : ICompositeController
         GetRandomCheckpoints();
     }
 
-    public void Disable() => _isEnableUpdateLogic = false;
-
-    public void Enable() => _isEnableUpdateLogic = true;
-
-    public void Update(float deltaTime)
+    public override void Enable()
     {
-        if (_isEnableUpdateLogic)
-            UpdateLogic(deltaTime);
-    }
+        base.Enable();
+        GetRandomCheckpoints();
+    }   
 
-    public void StopMove()
+    public override void StopMove()
     {
         _movable.CurrentVelocity = new Vector3(0, 0, 0);
         _movable.SetMoveDirection(Vector3.zero);
@@ -50,7 +46,7 @@ public class ControllerCompositeNavMeshRandomMove : ICompositeController
         QueueGetTargets();
     }
 
-    public void UpdateLogic(float deltaTime)
+    protected override void UpdateLogic(float deltaTime)
     {
         Vector3 direction = _currentEnemyTarget - _movable.Position;
 
@@ -86,5 +82,23 @@ public class ControllerCompositeNavMeshRandomMove : ICompositeController
             _checkPointsQueue.Enqueue(targets);
 
         _currentEnemyTarget = _checkPointsQueue.Peek();
+    }
+
+    private void DrawGizmos()
+    {
+        if (Application.isPlaying)
+        {
+            foreach (Vector3 targets in _checkPoints)
+            {
+                Gizmos.DrawSphere(targets, 0.2f);
+                Gizmos.color = Color.red;
+            }
+
+            for (int i = 0; i < _checkPoints.Count - 1; i++)
+            {               
+                Gizmos.DrawLine(_checkPoints[i], _checkPoints[i + 1]);
+                Gizmos.DrawLine(_checkPoints.Last(), _checkPoints.First());                
+            }
+        }
     }
 }

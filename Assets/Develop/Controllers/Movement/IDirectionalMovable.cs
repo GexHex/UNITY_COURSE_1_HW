@@ -8,5 +8,5 @@ public interface IDirectionalMovable
 
     void SetMoveDirection(Vector3 inputDirection);
 
-    void Update(float deltaTime);
+    void Update();
 }

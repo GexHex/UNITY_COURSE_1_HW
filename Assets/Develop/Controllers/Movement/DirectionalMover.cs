@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class ControllerDirectionalMoverCharacter : IDirectionalMovable
+public class DirectionalMover
 {
     private CharacterController _characterController;
     private float _movementSpeed;
     private Vector3 _currentDirection;
 
-    public ControllerDirectionalMoverCharacter(CharacterController characterController, float movementSpeed)
+    public DirectionalMover(CharacterController characterController, float movementSpeed)
     {
         _characterController = characterController;
         _movementSpeed = movementSpeed;

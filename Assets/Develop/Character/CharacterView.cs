@@ -17,6 +17,7 @@ public class CharacterView : MonoBehaviour
 
     private void Update()
     {
+       
         if (_character.CurrentVelocity.magnitude > 0.01f)
         {
             StartRunning();

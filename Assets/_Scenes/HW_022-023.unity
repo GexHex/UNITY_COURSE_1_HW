@@ -3879,10 +3879,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ee5438dfee48d46942801e22fb56ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _userInput: {fileID: 175043060}
   _character: {fileID: 233101344}
   _camera: {fileID: 330585545}
-  _flag: {fileID: 4990478952444300539, guid: bf7178e68b56f7042ba508748831dbe6, type: 3}
-  _userInput: {fileID: 175043060}
+  _flagPrefab: {fileID: 4990478952444300539, guid: bf7178e68b56f7042ba508748831dbe6,
+    type: 3}
 --- !u!4 &374056789
 Transform:
   m_ObjectHideFlags: 0
