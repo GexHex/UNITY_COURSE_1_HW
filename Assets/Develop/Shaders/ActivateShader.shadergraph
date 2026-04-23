@@ -431,7 +431,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "00c2991ef2614b149e8da35fe3088f6c",
     "m_Id": 0,
-    "m_DisplayName": "Color (1)",
+    "m_DisplayName": "AlarmColor",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -456,7 +456,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "02330280b8d44b95aa2cc13bd2aa0391",
     "m_Id": 0,
-    "m_DisplayName": "Color",
+    "m_DisplayName": "BaseColor",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -662,7 +662,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "19cb401d413a4f638b5d84721e7070a0",
     "m_Id": 0,
-    "m_DisplayName": "Float",
+    "m_DisplayName": "InputTime",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -949,11 +949,11 @@
     "m_Guid": {
         "m_GuidSerialized": "d6ae2f22-bb60-41dc-9b1c-d9b775d69692"
     },
-    "m_Name": "Float",
+    "m_Name": "InputTime",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Float",
-    "m_DefaultReferenceName": "_Float",
-    "m_OverrideReferenceName": "_timeSin",
+    "m_RefNameGeneratedByDisplayName": "InputTime",
+    "m_DefaultReferenceName": "_InputTime",
+    "m_OverrideReferenceName": "_time",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
@@ -1071,11 +1071,11 @@
     "m_Guid": {
         "m_GuidSerialized": "0c6e044f-31b5-427e-9c0e-e84f4ad78349"
     },
-    "m_Name": "Float (1)",
+    "m_Name": "AlarmColorBlend",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Float (1)",
-    "m_DefaultReferenceName": "_Float_1",
-    "m_OverrideReferenceName": "_alarmBlend",
+    "m_RefNameGeneratedByDisplayName": "AlarmColorBlend",
+    "m_DefaultReferenceName": "_AlarmColorBlend",
+    "m_OverrideReferenceName": "_alarmColorBlend",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
@@ -1190,10 +1190,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -930.4000244140625,
-            "y": 1724.0,
-            "width": 125.60003662109375,
-            "height": 76.800048828125
+            "x": -930.4000854492188,
+            "y": 1723.2000732421875,
+            "width": 117.60009765625,
+            "height": 33.5999755859375
         }
     },
     "m_Slots": [
@@ -1781,8 +1781,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2496.0,
-            "y": 592.0000610351563,
+            "x": -2495.199951171875,
+            "y": 606.4000244140625,
             "width": 124.0,
             "height": 172.79998779296876
         }
@@ -2553,10 +2553,10 @@
     "m_Guid": {
         "m_GuidSerialized": "f3620a2f-dabe-4ff4-ab6b-ce61d40cd2f0"
     },
-    "m_Name": "Color (1)",
+    "m_Name": "AlarmColor",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Color (1)",
-    "m_DefaultReferenceName": "_Color_1",
+    "m_RefNameGeneratedByDisplayName": "AlarmColor",
+    "m_DefaultReferenceName": "_AlarmColor",
     "m_OverrideReferenceName": "_colorAlarm",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -2926,11 +2926,11 @@
     "m_Guid": {
         "m_GuidSerialized": "9ff220bf-dbbb-498c-abe6-0c950610d7b8"
     },
-    "m_Name": "Color",
+    "m_Name": "BaseColor",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Color",
-    "m_DefaultReferenceName": "_Color",
-    "m_OverrideReferenceName": "_colorBase",
+    "m_RefNameGeneratedByDisplayName": "BaseColor",
+    "m_DefaultReferenceName": "_BaseColor",
+    "m_OverrideReferenceName": "_baseColor",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
@@ -3056,7 +3056,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "f27e6d1580bb4fa08a05454a1a453b0a",
     "m_Id": 0,
-    "m_DisplayName": "Float (1)",
+    "m_DisplayName": "AlarmColorBlend",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",

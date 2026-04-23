@@ -59,11 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55c61fc3338c0df469879dd16e43b99e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosionClip: {fileID: 8300000, guid: 659c745e818b05d49acbd5578ec6b725, type: 3}
-  _sfxMixer: {fileID: 128701648011384305, guid: f5fc1de894936b04b870677fcfceb9cc,
-    type: 2}
   _mineView: {fileID: 7629333823280078230}
-  _meshRenderer: {fileID: 5469888378512966632}
 --- !u!135 &3198686333987038799
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -428,3 +424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _explosionVFX: {fileID: 161422, guid: 02b55b1514278964187c93c0b09a3dc4, type: 3}
   _damageRadiusVisual: {fileID: 5790008391041665257}
+  _meshRenderer: {fileID: 5469888378512966632}
+  _explosionClip: {fileID: 8300000, guid: 659c745e818b05d49acbd5578ec6b725, type: 3}
+  _sfxMixer: {fileID: 128701648011384305, guid: f5fc1de894936b04b870677fcfceb9cc,
+    type: 2}

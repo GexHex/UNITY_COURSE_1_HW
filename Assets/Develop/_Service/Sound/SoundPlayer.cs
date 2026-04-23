@@ -11,9 +11,21 @@ public static class SoundPlayer
         AudioSource source = obj.AddComponent<AudioSource>();
         source.clip = clip;
         source.outputAudioMixerGroup = mixer;
-        source.spatialBlend = 1f; // 3D звук
+        source.spatialBlend = 1f;
         source.Play();
 
         Object.Destroy(obj, clip.length);
+    }
+
+    public static void PlayMusic(AudioClip clip, AudioMixerGroup mixer, AudioSource source, bool isPlay)
+    {        
+        source.clip = clip;
+        source.outputAudioMixerGroup = mixer;
+        source.spatialBlend = 1f;
+
+        if (isPlay)
+            source.Play();
+        else
+            source.Stop();
     }
 }

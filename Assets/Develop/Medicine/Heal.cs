@@ -1,22 +1,22 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Audio;
 
 public class Heal : MonoBehaviour
 {
     [SerializeField] private HealView _healView;
-
-    [SerializeField] private AudioClip _explosionClip;
-    [SerializeField] private AudioMixerGroup _sfxMixer;
-
+    private bool _isHealProcess;
     private float _mineDistanceHeal = 2f;
     private float _timeToExplosion = 0.2f;
     private int _healValue = 10;
 
     private void OnTriggerEnter(Collider other)
     {
+        if (_isHealProcess)
+            return;
+
         if (other.TryGetComponent<IHealable>(out var entity))
         {
+            _isHealProcess = true;
             StartCoroutine(Recover());
         }
     }
@@ -35,19 +35,14 @@ public class Heal : MonoBehaviour
                 objectToHeal.Heal(_healValue);
         }
 
-        PlayHealEffect();
+        _healView.PlayHealEffect();
+
         Destroy(gameObject);
     }
 
-    private void PlayHealEffect()
-    {
-        _healView.InstantiateEffect(transform.position);
-        SoundPlayer.Play(_explosionClip, transform.position, _sfxMixer);
-    }
-
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, _mineDistanceHeal);
+        Gizmos.DrawWireSphere(transform.position, _mineDistanceHeal / 5);
     }
 }

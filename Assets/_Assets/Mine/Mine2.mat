@@ -115,12 +115,15 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     - _alarmBlend: 20
+    - _alarmColorBlend: 20
+    - _time: 0
     - _timeSin: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 0, b: 0.06442404, a: 1}
     - _Color: {r: 1, g: 0, b: 0.064424016, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _baseColor: {r: 0.6830188, g: 0.6830188, b: 0.6830188, a: 0}
     - _colorAlarm: {r: 1, g: 0, b: 0, a: 0}
     - _colorBase: {r: 0.6679245, g: 0.6679245, b: 0.6679245, a: 0}
   m_BuildTextureStacks: []

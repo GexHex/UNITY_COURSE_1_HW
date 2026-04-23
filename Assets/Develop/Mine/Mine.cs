@@ -1,71 +1,45 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Audio;
 
 public class Mine : MonoBehaviour
 {
-    private const string Key1 = "_timeSin";
-    private const string Key2 = "_alarmBlend";
-
-    [SerializeField] private AudioClip _explosionClip;
-    [SerializeField] private AudioMixerGroup _sfxMixer;
-    [SerializeField] private MineView _mineView;
-    [SerializeField] private MeshRenderer _meshRenderer;
-
+    [SerializeField] private MineView _mineView;  
+    private bool _isExplodeProcess;
     private float _mineDistanceDamage = 2f;
+    private float _timeToDestroyMine = 0.2f;
+    private int _damageValue = 10;
     private float _timeToExplosion = 2;
-    private float _timeToDestroyMime = 0.2f;
-    private int _damageValue = 10;    
-    
-    private float _time;
 
     private void OnTriggerEnter(Collider other)
     {
+        if (_isExplodeProcess)
+            return;
+
         if (other.TryGetComponent<IDamageable>(out var entity))
-        {            
+        {
+            _isExplodeProcess = true;
             StartCoroutine(Explode());
         }
     }
 
     private IEnumerator Explode()
-    {
-        _meshRenderer.material.SetFloat(Key2, 20);
+    {       
+        StartCoroutine(_mineView.Explode(_timeToExplosion, _mineDistanceDamage));
 
-        while (_time <= _timeToExplosion)
-        {
-            _meshRenderer.material.SetFloat(Key1, _time);
-            _time += Time.deltaTime;
-            yield return null;
-        }
-        //------------------------------------------------------------------------------
-        yield return null;
+        yield return new WaitForSeconds(_timeToExplosion);
 
-        Collider[] _colliders = Physics.OverlapSphere(transform.position, _mineDistanceDamage);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _mineDistanceDamage);
 
-        foreach (Collider collider in _colliders)
+        foreach (Collider collider in colliders)
         {
             IDamageable objectToDamage = collider.GetComponent<IDamageable>();
 
             if (objectToDamage != null)
                 objectToDamage.TakeDamage(_damageValue);
         }
-        
-        PlayExplosionEffect();
-        ShowDamageRadius();
 
-        yield return new WaitForSeconds(_timeToDestroyMime);
+        yield return new WaitForSeconds(_timeToDestroyMine);
 
         Destroy(gameObject);
-    }
-
-    private void PlayExplosionEffect()
-    {
-        _mineView.InstantiateEffect(transform.position);
-        SoundPlayer.Play(_explosionClip, transform.position, _sfxMixer);
-    }
-
-    private void ShowDamageRadius()
-    {
-        _mineView.SetDamageScaleView(_mineDistanceDamage / 5);
     }
 }

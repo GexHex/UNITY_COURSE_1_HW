@@ -5,7 +5,8 @@ using UnityEngine;
 public class MedicineSpawner : MonoBehaviour
 {
     [SerializeField] private CharacterAgent _spawnCenter;
-    [SerializeField] private GameObject _medicinePrefab;
+    [SerializeField] private Heal _medicinePrefab;
+    [SerializeField] private SoundController _soundController;
     private List<Vector3> _points;
     private Coroutine _spawnCoroutine;
     private float _spawnRadius = 3;
@@ -52,7 +53,9 @@ public class MedicineSpawner : MonoBehaviour
     {
         foreach (var point in _points)
         {
-            Instantiate(_medicinePrefab, point, Quaternion.identity);
+            var heal = Instantiate(_medicinePrefab, point, Quaternion.identity);
+
+            heal.GetComponentInChildren<HealView>()?.Initialize(_soundController);
         }
     }
 }

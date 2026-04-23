@@ -15,22 +15,22 @@ public class SoundMixerUIButtonToggle : MonoBehaviour
     [SerializeField] private float _offVolume = -80f;
 
     [SerializeField] private bool _startEnabled = true;
-    private bool _isEnabled;
+    private bool _isButtonEnabled;
 
     private void Awake()
     {
-        _isEnabled = _startEnabled;
+        _isButtonEnabled = _startEnabled;
         UpdateText();
     }
 
     public void OnButtonClick()
     {
-        if (_isEnabled)
+        if (_isButtonEnabled)
             Disable();
         else
             Enable();
 
-        _isEnabled = !_isEnabled;
+        _isButtonEnabled = !_isButtonEnabled;
 
         UpdateText();
     }
@@ -43,6 +43,6 @@ public class SoundMixerUIButtonToggle : MonoBehaviour
         if (_buttonText == null)
             return;
 
-        _buttonText.text = _isEnabled ? _onText : _offText;
+        _buttonText.text = _isButtonEnabled ? _onText : _offText;
     }
 }

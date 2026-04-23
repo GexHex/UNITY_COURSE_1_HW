@@ -165,9 +165,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healView: {fileID: 3632472692003386268}
-  _explosionClip: {fileID: 8300000, guid: 121b12effa0fe2c42bfff1bdad10ee69, type: 3}
-  _sfxMixer: {fileID: 128701648011384305, guid: f5fc1de894936b04b870677fcfceb9cc,
-    type: 2}
 --- !u!135 &3198686333987038799
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -320,6 +317,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healVFX: {fileID: 105942, guid: ff672eaca96d32c419d7a1f1b0346e8d, type: 3}
+  _explosionClip: {fileID: 8300000, guid: 121b12effa0fe2c42bfff1bdad10ee69, type: 3}
+  _sfxMixer: {fileID: 128701648011384305, guid: f5fc1de894936b04b870677fcfceb9cc,
+    type: 2}
 --- !u!1 &7998418423205449052
 GameObject:
   m_ObjectHideFlags: 0

@@ -39,7 +39,6 @@ public class MaterialDeathEffect : MonoBehaviour
         foreach (var renderer in _renderers)
         {
             renderer.material.SetFloat("_Edge", _elapsedTime / _timeLimit);
-            //_materialDeath.SetFloat("_Edge", _elapsedTime / _timeLimit);
         }
     }
 }
