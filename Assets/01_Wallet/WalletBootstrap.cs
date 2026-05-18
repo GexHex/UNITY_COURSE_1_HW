@@ -2,17 +2,18 @@ using UnityEngine;
 
 namespace Wallet
 {
-    public class WalletService : MonoBehaviour
+    public class WalletBootstrap : MonoBehaviour
     {
-        [SerializeField] private InputUser _inputUser;
+        [SerializeField] private WalletTestingInput _inputUser;
         [SerializeField] private WalletController _walletController;
-        [SerializeField] private WalletPrintInfo _walletPrintInfo;
+        [SerializeField] private WalletView _walletView;
+
         private Wallet _wallet;
 
         private void Awake()
         {
             _wallet = new Wallet();
-            _walletPrintInfo.Initialize(_wallet);
+            _walletView.Initialize(_wallet);
             _walletController.Initialize(_inputUser, _wallet);
         }
     }

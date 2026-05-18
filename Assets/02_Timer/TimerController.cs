@@ -5,10 +5,11 @@ namespace Timer
     public class TimerController : MonoBehaviour
     {
         [SerializeField] private float _startime = 12;
-        private InputUser _inputUser;
+
+        private TimerTestingInput _inputUser;
         private Timer _timer;        
 
-        public void Initialize(InputUser inputUser, Timer timer)
+        public void Initialize(TimerTestingInput inputUser, Timer timer)
         {
             _inputUser = inputUser;
             _timer = timer;

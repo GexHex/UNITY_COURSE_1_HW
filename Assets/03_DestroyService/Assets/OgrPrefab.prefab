@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 88fc21dc8c98e9942a4cc03ec62c2179, type: 2}
+  - {fileID: 2100000, guid: bf58bb9824ee5cb41bec57ed51680b90, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 5096347201218895315}
   - component: {fileID: 7091947007509911539}
   m_Layer: 0
-  m_Name: Enemy2
+  m_Name: OgrPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

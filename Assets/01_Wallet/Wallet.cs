@@ -1,24 +1,38 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Wallet
 {
     public class Wallet
     {
-        public event Action<ItemType, int, string> CoinValueChanged;
-        Dictionary<ItemType, int> _storage = new Dictionary<ItemType, int>();
+        public event Action<ItemType, int> CoinValueChanged;
 
-        public void ChangeCoin(ItemType type, int delta)
+        private Dictionary<ItemType, int> _storage = new Dictionary<ItemType, int>();
+
+        public void AddCurrency(ItemType itemType, int count)
         {
-            if (_storage.ContainsKey(type))
-                _storage[type] += delta;
-            else if (delta > 0)
-                _storage[type] = delta;
+            UpdateWallet(itemType, count);
 
-            if (_storage.ContainsKey(type) && _storage[type] <= 0)
-                _storage.Remove(type);
+            CoinValueChanged?.Invoke(itemType, _storage.GetValueOrDefault(itemType));
+        }
 
-            CoinValueChanged?.Invoke(type, _storage.GetValueOrDefault(type), null);
+        public void TrySpendCurrency(ItemType itemType, int count)
+        {
+            UpdateWallet(itemType, -Mathf.Abs(count));
+
+            CoinValueChanged?.Invoke(itemType, _storage.GetValueOrDefault(itemType));
+        }
+
+        private void UpdateWallet(ItemType itemType, int count)
+        {
+            if (_storage.ContainsKey(itemType))
+                _storage[itemType] += count;
+            else if (count > 0)
+                _storage[itemType] = count;
+
+            if (_storage.ContainsKey(itemType) && _storage[itemType] <= 0)
+                _storage.Remove(itemType);
         }
     }
 }

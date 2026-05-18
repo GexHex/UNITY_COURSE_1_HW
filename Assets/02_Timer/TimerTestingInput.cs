@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Timer
 {
-    public class InputUser : MonoBehaviour
+    public class TimerTestingInput : MonoBehaviour
     {
-        public Action StartPressed;
-        public Action StopPressed;
-        public Action ResetPressed;
+        public event Action StartPressed;
+        public event Action StopPressed;
+        public event Action ResetPressed;
 
         private void Update()
         {

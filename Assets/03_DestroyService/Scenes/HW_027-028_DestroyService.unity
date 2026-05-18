@@ -599,12 +599,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393143744}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1460002723}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &572224593
 GameObject:
@@ -920,11 +920,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inputUser: {fileID: 1078087304}
   _text: {fileID: 336697749}
-  _prefabEnemy1: {fileID: 4634442706588238847, guid: f52ae8ba696e2214398e97d6b91e1a65,
+  _dragonPrefab: {fileID: 4634442706588238847, guid: f52ae8ba696e2214398e97d6b91e1a65,
     type: 3}
-  _prefabEnemy2: {fileID: 4634442706588238847, guid: 7317b1231391ffc408dc8cfea39e9f26,
+  _elfPrefab: {fileID: 4634442706588238847, guid: 7317b1231391ffc408dc8cfea39e9f26,
     type: 3}
-  _prefabEnemy3: {fileID: 4634442706588238847, guid: b58146662fd492849a714540e5d5c7e9,
+  _ogrPrefab: {fileID: 4634442706588238847, guid: b58146662fd492849a714540e5d5c7e9,
     type: 3}
 --- !u!4 &888583361
 Transform:
@@ -952,7 +952,7 @@ GameObject:
   - component: {fileID: 1078087305}
   - component: {fileID: 1078087304}
   m_Layer: 0
-  m_Name: InputUser
+  m_Name: UserInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1150,6 +1150,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419068559}
   m_CullTransparentMesh: 1
+--- !u!1 &1460002722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1460002723}
+  m_Layer: 0
+  m_Name: LevelDesign
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1460002723
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460002722}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 393143748}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1480452514
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,7 +1226,7 @@ GameObject:
   - component: {fileID: 1829366376}
   - component: {fileID: 1829366375}
   m_Layer: 5
-  m_Name: Info
+  m_Name: DestroyServiceView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1411,4 +1443,4 @@ SceneRoots:
   - {fileID: 1078087305}
   - {fileID: 888583361}
   - {fileID: 1480452515}
-  - {fileID: 393143748}
+  - {fileID: 1460002723}

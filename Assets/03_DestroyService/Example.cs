@@ -5,11 +5,11 @@ namespace DestroyService
 {
     public class Example : MonoBehaviour
     {
-        [SerializeField] private InputUser _inputUser;
+        [SerializeField] private UserInput _inputUser;
         [SerializeField] private TMP_Text _text;
-        [SerializeField] private GameObject _prefabEnemy1;
-        [SerializeField] private GameObject _prefabEnemy2;
-        [SerializeField] private GameObject _prefabEnemy3;
+        [SerializeField] private GameObject _dragonPrefab;
+        [SerializeField] private GameObject _elfPrefab;
+        [SerializeField] private GameObject _ogrPrefab;
         private DestroyService _destroyService;
         private readonly int _minPositionRange = -3;
         private readonly int _maxPositionRange = 3;
@@ -18,16 +18,16 @@ namespace DestroyService
         {
             _destroyService = new DestroyService();
 
-            _inputUser.EntityCreated01 += OnCreateEnemy1;
-            _inputUser.EntityCreated02 += OnCreateEnemy2;
-            _inputUser.EntityCreated03 += OnCreateEnemy3;
+            _inputUser.DragonCreated += OnCreateDragon;
+            _inputUser.ElfCreated += OnCreateElf;
+            _inputUser.OgrCreated += OnCreateOrg;
         }
 
         private void OnDestroy()
         {
-            _inputUser.EntityCreated01 -= OnCreateEnemy1;
-            _inputUser.EntityCreated02 -= OnCreateEnemy2;
-            _inputUser.EntityCreated03 -= OnCreateEnemy3;
+            _inputUser.DragonCreated -= OnCreateDragon;
+            _inputUser.ElfCreated -= OnCreateElf;
+            _inputUser.OgrCreated -= OnCreateOrg;
         }
 
         private void Update()
@@ -37,9 +37,26 @@ namespace DestroyService
             _text.text = _destroyService.EnemyNumber.ToString();
         }
 
-        private void OnCreateEnemy1() => _destroyService.AddEnemy(CreateObject(_prefabEnemy1), DeadRuleBoolIsDead);
-        private void OnCreateEnemy2() => _destroyService.AddEnemy(CreateObject(_prefabEnemy2), DeadRuleBirthTime);
-        private void OnCreateEnemy3() => _destroyService.AddEnemy(CreateObject(_prefabEnemy3), DeadRuleToMuch);
+        private void OnCreateDragon()
+        {
+            Enemy newEnemy = CreateObject(_dragonPrefab);
+
+            _destroyService.AddEnemy(newEnemy, () => DeadRuleBoolIsDead(newEnemy));
+        }
+
+        private void OnCreateElf()
+        {
+            Enemy newEnemy = CreateObject(_elfPrefab);
+
+            _destroyService.AddEnemy(newEnemy, () => DeadRuleBirthTime(newEnemy));
+        }
+
+        private void OnCreateOrg()
+        {
+            Enemy newEnemy = CreateObject(_ogrPrefab);
+
+            _destroyService.AddEnemy(newEnemy, () => DeadRuleToMuch(newEnemy));
+        }
 
         private Enemy CreateObject(GameObject prefab)
         {
@@ -50,9 +67,9 @@ namespace DestroyService
             enemy.BirthTime = Time.time;
             enemy.DeathTime = Time.time;
 
-            if (prefab == _prefabEnemy1)
+            if (prefab == _dragonPrefab)
                 enemy.Type = 1;
-            else if (prefab == _prefabEnemy2)
+            else if (prefab == _elfPrefab)
                 enemy.Type = 2;
             else
                 enemy.Type = 3;
@@ -70,6 +87,7 @@ namespace DestroyService
         bool DeadRuleBirthTime(Enemy enemy)
         {
             float timePassed = Time.time - enemy.BirthTime;
+
             return timePassed > 3f;
         }
 
@@ -77,9 +95,11 @@ namespace DestroyService
         {
             int count = 0;
 
-            foreach (Enemy enemys in _destroyService.Enemies)
+            foreach (var pair in _destroyService.Rules)
             {
-                if (enemys.gameObject.name == _prefabEnemy3.name)
+                Enemy currentEnemy = pair.Key;
+
+                if (currentEnemy.gameObject.name == _ogrPrefab.name)
                     count++;
             }
 
@@ -89,6 +109,7 @@ namespace DestroyService
         private Vector3 GetRamdomPosition()
         {
             Vector3 position = new(Random.Range(_minPositionRange, _maxPositionRange), 0, Random.Range(_minPositionRange, _maxPositionRange));
+            
             return position;
         }
     }
