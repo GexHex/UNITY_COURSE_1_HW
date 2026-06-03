@@ -1,9 +1,8 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ExampleInventory : MonoBehaviour
 {
-    Inventory _inventory;
+    private Inventory _inventory;
 
     private void Awake()
     {
@@ -13,78 +12,71 @@ public class ExampleInventory : MonoBehaviour
         Item elf = new Item("Elf");
         Item ogr = new Item("Org");
 
+        //-------------------------------------------------------------------
 
-        _inventory.TryAdd(dragon);
-        _inventory.TryAdd(dragon);
-        _inventory.TryAdd(dragon);
-        _inventory.TryAdd(dragon);
-        _inventory.TryAdd(dragon);
-        _inventory.TryAdd(dragon);   
+        _inventory.TryAdd(dragon, 6);
+        _inventory.TryAdd(elf, 3);
 
-        _inventory.TryAdd(elf);
-        _inventory.TryAdd(elf);
-        _inventory.TryAdd(elf);
-
-        foreach (Item item in _inventory.Items)
-        {
-            Debug.Log(item.Name);
-        }
+        ShowInventory();
 
         Debug.Log($"Всего предметов: {_inventory.CurrentCount}");
-        //-------------------------------------------------------------------
-        List<Item> dragons = _inventory.GetItemsBy("Dragon", 3);
-        Debug.Log($"Получено : {dragons.Count}");
 
-        List<Item> elfs = _inventory.GetItemsBy("Elf", 2);
-        Debug.Log($"Получено : {elfs.Count}");
+        //-------------------------------------------------------------------
+
+        int dragons = _inventory.GetItemsBy("Dragon", 3);
+        Debug.Log($"Получено : {dragons}");
+
+        int elfs = _inventory.GetItemsBy("Elf", 2);
+        Debug.Log($"Получено : {elfs}");
 
         Debug.Log($"Всего предметов: {_inventory.CurrentCount}");
+
+        ShowInventory();
+
         //-------------------------------------------------------------------
+
         elfs = _inventory.GetItemsBy("Elf", 5);
-        Debug.Log($"Получено : {elfs.Count}");
+        Debug.Log($"Получено : {elfs}");
 
         dragons = _inventory.GetItemsBy("Dragon", 12);
-        Debug.Log($"Получено : {dragons.Count}");       
+        Debug.Log($"Получено : {dragons}");
 
         Debug.Log($"Всего предметов: {_inventory.CurrentCount}");
+
+        ShowInventory();
+
         //===================================================================
-        Debug.Log($"Все предметы:");
 
-        foreach (Item item in _inventory.Items)
-        {
-            Debug.Log(item.Name);
-        }
+        _inventory.TryAdd(ogr, 3);
+        _inventory.TryAdd(dragon, 2);
+        _inventory.TryAdd(elf, 3);
 
-        _inventory.TryAdd(ogr);      
-        _inventory.TryAdd(ogr);
-        _inventory.TryAdd(ogr);
-        _inventory.TryAdd(dragon);
-        _inventory.TryAdd(dragon);
-
-        _inventory.TryAdd(elf);
-        _inventory.TryAdd(elf);
-        _inventory.TryAdd(elf);
-
-        foreach (Item item in _inventory.Items)
-        {
-            Debug.Log(item.Name);
-        }
+        ShowInventory();
 
         Debug.Log($"Всего предметов: {_inventory.CurrentCount}");
+
         //-------------------------------------------------------------------
-        dragons = _inventory.GetItemsBy("Dragon", 3);
-        Debug.Log($"Получено : {dragons.Count}");
 
-        List<Item> Ogrs = _inventory.GetItemsBy("Org", 2);
-        Debug.Log($"Получено : {Ogrs.Count}");
+        dragons = _inventory.GetItemsBy("Dragon", 3);
+        Debug.Log($"Получено : {dragons}");
+
+        int ogrs = _inventory.GetItemsBy("Org", 2);
+        Debug.Log($"Получено : {ogrs}");
 
         Debug.Log($"Всего предметов: {_inventory.CurrentCount}");
-        //===================================================================
-        Debug.Log($"Все предметы:");
 
-        foreach (Item item in _inventory.Items)
+        ShowInventory();
+    }
+
+    private void ShowInventory()
+    {
+        Debug.Log("----------- Все предметы: -----------");
+
+        foreach (InventoryCell cell in _inventory.Cells)
         {
-            Debug.Log(item.Name);
+            Debug.Log($"{cell.Item.Name}: {cell.Count}");
         }
+
+        Debug.Log("-------------------------------------");
     }
 }

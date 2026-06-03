@@ -10,14 +10,15 @@ namespace Timer
         public event Action TimeIsUp;
 
         private readonly float _minTime = 0;
-
         private bool _isWorking;
 
-        public ReactiveTime CurrentTime { get; }
+        private ReactiveVariable<float> _currentTime;
+
+        public IReadOnlyVariable<float> CurrentTime => _currentTime;
 
         public Timer()
         {
-            CurrentTime = new ReactiveTime();
+            _currentTime = new ReactiveVariable<float>();
         }
 
         public void Update(float deltaTime)
@@ -52,7 +53,7 @@ namespace Timer
         {
             _isWorking = false;
 
-            CurrentTime.Value = time;
+            _currentTime.Value = time;
 
             Reset?.Invoke();
         }
@@ -61,7 +62,7 @@ namespace Timer
         {
             if (CurrentTime.Value <= 0)
             {
-                CurrentTime.Value = _minTime;
+                _currentTime.Value = _minTime;
 
                 _isWorking = false;
 
@@ -70,7 +71,7 @@ namespace Timer
                 return;
             }
 
-            CurrentTime.Value -= deltaTime;
+            _currentTime.Value -= deltaTime;
         }
     }
 }

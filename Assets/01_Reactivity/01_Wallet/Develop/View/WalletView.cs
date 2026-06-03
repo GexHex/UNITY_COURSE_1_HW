@@ -6,8 +6,8 @@ namespace Wallet
     public class WalletView : MonoBehaviour 
     {
         [SerializeField] private List<CurrencyView> _currencyViews;
-        private ReactiveDictionary<ItemType, int> _reactiveVar;
 
+        private IReadOnlyReactiveDictionary<ItemType, int> _reactiveVar;
 
         private Wallet _wallet;
 

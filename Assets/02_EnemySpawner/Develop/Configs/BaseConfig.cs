@@ -1,7 +1,7 @@
 using System;
 
 [Serializable]
-public abstract class EnemyConfig
+public abstract class BaseConfig
 {
 
 }

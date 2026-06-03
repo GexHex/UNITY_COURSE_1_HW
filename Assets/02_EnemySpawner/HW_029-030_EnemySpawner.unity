@@ -609,32 +609,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawner: {fileID: 1221233837}
-  _orkPrefab: {fileID: 2780311013964412176, guid: 7f3681210e8e81946963be47781edd61,
-    type: 3}
-  _elfPrefab: {fileID: 3336849423415870205, guid: 3a37f2f3a19a4a94789b1f074a826cfa,
-    type: 3}
-  _dragonPrefab: {fileID: 6387218227344910238, guid: f6d43c607c2868144bda197efe5b790a,
-    type: 3}
   _orkConfigs:
   - Damage: 1
-    Rage: 2
+    Rage: 3
   - Damage: 2
-    Rage: 1
-  - Damage: 5
-    Rage: 2
+    Rage: 5
+  - Damage: 1
+    Rage: 8
   _elfConfigs:
+  - Mana: 2
+    Agility: 8
   - Mana: 1
-    Agility: 5
-  - Mana: 3
-    Agility: 2
-  - Mana: 1
-    Agility: 6
+    Agility: 3
+  - Mana: 6
+    Agility: 7
   _dragonConfigs:
-  - FireDamage: 6
+  - FireDamage: 8
     FlySpeed: 2
-  - FireDamage: 2
+  - FireDamage: 4
     FlySpeed: 1
-  - FireDamage: 3
+  - FireDamage: 7
     FlySpeed: 8
 --- !u!1 &1221233836
 GameObject:
@@ -665,6 +659,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2968fff1e24bf7b4398aa1769210962f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _orkPrefab: {fileID: 2780311013964412176, guid: 7f3681210e8e81946963be47781edd61,
+    type: 3}
+  _elfPrefab: {fileID: 3336849423415870205, guid: 3a37f2f3a19a4a94789b1f074a826cfa,
+    type: 3}
+  _dragonPrefab: {fileID: 6387218227344910238, guid: f6d43c607c2868144bda197efe5b790a,
+    type: 3}
 --- !u!4 &1221233838
 Transform:
   m_ObjectHideFlags: 0

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class BaseEnemy<TConfig> : MonoBehaviour where TConfig : EnemyConfig
+public abstract class BaseEnemy : MonoBehaviour
 {
-    public abstract void Setup(TConfig config);
+    
 }

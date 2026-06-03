@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class Ork : BaseEnemy<ConfigOrk>
+public class Ork : BaseEnemy
 {
     private int _damage;
     private int _rage;
 
-    public override void Setup(ConfigOrk config)
+    public void Setup(ConfigOrk config)
     {
         _damage = config.Damage;
         _rage = config.Rage;

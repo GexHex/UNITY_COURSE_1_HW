@@ -5,11 +5,6 @@ public class Example : MonoBehaviour
     [Header("Spawner")]
     [SerializeField] private EnemySpawner _spawner;
 
-    [Header("Prefabs")]
-    [SerializeField] private Ork _orkPrefab;
-    [SerializeField] private Elf _elfPrefab;
-    [SerializeField] private Dragon _dragonPrefab;
-
     [Header("Configs")]
     [SerializeField] private ConfigOrk[] _orkConfigs;
     [SerializeField] private ConfigElf[] _elfConfigs;
@@ -17,14 +12,12 @@ public class Example : MonoBehaviour
 
     private void Start()
     {
-        SpawnEnemies(_orkPrefab, _orkConfigs, 0);
-        SpawnEnemies(_elfPrefab, _elfConfigs, 3);
-        SpawnEnemies(_dragonPrefab, _dragonConfigs, 6);
+        SpawnEnemies(_orkConfigs, 0);
+        SpawnEnemies(_elfConfigs, 3);
+        SpawnEnemies(_dragonConfigs, 6);
     }
 
-    private void SpawnEnemies<TEnemy, TConfig>(TEnemy prefab, TConfig[] configs, float zOffset) 
-        where TEnemy : BaseEnemy<TConfig>
-        where TConfig : EnemyConfig
+    private void SpawnEnemies<TConfig>(TConfig[] configs, float zOffset) where TConfig : BaseConfig
     {
         for (int i = 0; i < configs.Length; i++)
         {
@@ -32,7 +25,7 @@ public class Example : MonoBehaviour
 
             Vector3 position = new Vector3(i * 2, 0, zOffset);
 
-            _spawner.Spawn(prefab, randomConfig, position);
+            _spawner.Spawn(randomConfig, position);
         }
     }
 }

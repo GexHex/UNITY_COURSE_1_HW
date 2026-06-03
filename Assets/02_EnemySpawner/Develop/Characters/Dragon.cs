@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class Dragon : BaseEnemy<ConfigDragon>
+public class Dragon : BaseEnemy
 {
     private int _fireDamage;
     private float _flySpeed;
 
-    public override void Setup(ConfigDragon config)
+    public void Setup(ConfigDragon config)
     {
         _fireDamage = config.FireDamage;
         _flySpeed = config.FlySpeed;

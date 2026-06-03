@@ -1,52 +1,55 @@
 using System.Collections.Generic;
+using System.Linq;
 
 public class Inventory
-{
-    private readonly List<Item> _items;
-    private readonly int _maxCount;
-
-    public IReadOnlyList<Item> Items => _items;
-
-    public int CurrentCount => _items.Count;
+{   
+    private readonly List<InventoryCell> _cells = new();
 
     public Inventory(int maxCount)
     {
-        _maxCount = maxCount;
-        _items = new List<Item>();
+        MaxCount = maxCount;
     }
 
-    public bool TryAdd(Item item)
+    public IReadOnlyList<InventoryCell> Cells => _cells;
+
+    public int CurrentCount => _cells.Sum(cell => cell.Count);
+
+    public int MaxCount { get; }
+
+    public bool TryAdd(Item item, int count)
     {
-        if (item == null)
+        if (item == null || count <= 0)
             return false;
 
-        if (CurrentCount >= _maxCount)
+        if (CurrentCount + count > MaxCount)
             return false;
 
-        _items.Add(item);
+        InventoryCell cell = _cells.FirstOrDefault(c => c.Item.Name == item.Name);
+
+        if (cell != null)
+        {
+            cell.Add(count);
+        }
+        else
+        {
+            _cells.Add(new InventoryCell(item, count));
+        }
 
         return true;
     }
 
-    public List<Item> GetItemsBy(string name, int count)
+    public int GetItemsBy(string name, int count)
     {
-        List<Item> receivedItems = new();
+        InventoryCell cell = _cells.FirstOrDefault(c => c.Item.Name == name);
 
-        if (count <= 0)
-            return receivedItems;
+        if (cell == null)
+            return 0;
 
-        for (int i = _items.Count - 1; i >= 0; i--)
-        {
-            if (_items[i].Name != name)
-                continue;
+        int removed = cell.Remove(count);
 
-            receivedItems.Add(_items[i]);
-            _items.RemoveAt(i);
+        if (cell.Count == 0)
+            _cells.Remove(cell);
 
-            if (receivedItems.Count >= count)
-                break;
-        }
-
-        return receivedItems;
+        return removed;
     }
 }

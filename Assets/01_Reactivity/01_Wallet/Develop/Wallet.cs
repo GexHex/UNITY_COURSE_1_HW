@@ -6,7 +6,7 @@ namespace Wallet
     {
         private ReactiveDictionary<ItemType, int> _storage = new();
 
-        public ReactiveDictionary<ItemType, int> Storage => _storage;
+        public IReadOnlyReactiveDictionary<ItemType, int> Storage => _storage;
 
         public void AddCurrency(ItemType itemType, int count)
         {
@@ -20,12 +20,13 @@ namespace Wallet
 
         private void UpdateWallet(ItemType itemType, int count)
         {
-            if (_storage.ContainsKey(itemType))
-                _storage[itemType] += count;
-            else if (count > 0)
-                _storage.Add(itemType, count);
+            int currentValue = _storage.GetValueOrDefault(itemType);
 
-            if (_storage.ContainsKey(itemType) && _storage[itemType] <= 0)
+            int newValue = currentValue + count;
+
+            if (newValue > 0)
+                _storage.Set(itemType, newValue);
+            else
                 _storage.Remove(itemType);
         }
     }

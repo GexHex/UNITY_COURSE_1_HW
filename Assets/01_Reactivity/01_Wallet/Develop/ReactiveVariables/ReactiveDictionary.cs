@@ -3,45 +3,36 @@ using System.Collections.Generic;
 
 namespace Wallet
 {
-    public class ReactiveDictionary<ItemType, TValue>
+    public class ReactiveDictionary<TKey, TValue> : IReadOnlyReactiveDictionary<TKey, TValue>
     {
-        public event Action<ItemType, int> Changed;
+        public event Action<TKey, TValue> Changed;
 
-        private readonly Dictionary<ItemType, int> _storage = new();
+        private readonly Dictionary<TKey, TValue> _storage = new();
 
-        public bool ContainsKey(ItemType key)
+        public IReadOnlyDictionary<TKey, TValue> Values => _storage;
+
+        public bool ContainsKey(TKey key)
         {
             return _storage.ContainsKey(key);
         }
 
-        public int GetValueOrDefault(ItemType key)
+        public TValue GetValueOrDefault(TKey key)
         {
             return _storage.GetValueOrDefault(key);
         }
 
-        public void Add(ItemType key, int value)
+        public void Set(TKey key, TValue value)
         {
             _storage[key] = value;
 
             Changed?.Invoke(key, value);
         }
 
-        public void Remove(ItemType key)
+        public void Remove(TKey key)
         {
-            _storage.Remove(key);
-
-            Changed?.Invoke(key, default);
-        }
-
-        public int this[ItemType key]
-        {
-            get => _storage[key];
-
-            set
+            if (_storage.Remove(key))
             {
-                _storage[key] = value;
-
-                Changed?.Invoke(key, value);
+                Changed?.Invoke(key, default);
             }
         }
     }
