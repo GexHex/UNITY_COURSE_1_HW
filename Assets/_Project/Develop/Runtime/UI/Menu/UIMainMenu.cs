@@ -1,4 +1,5 @@
 using Assets._Project.Develop.Runtime.UI.Wrappers;
+using System;
 using UnityEngine;
 
 namespace Assets._Project.Develop.Runtime.UI.Menu
@@ -7,6 +8,9 @@ namespace Assets._Project.Develop.Runtime.UI.Menu
     {
         [SerializeField] private UIButtonWrapper _digits;
         [SerializeField] private UIButtonWrapper _letters;
+
+        public event Action DigitsClicked;
+        public event Action LettersClicked;
 
         private void Awake()
         {
@@ -22,11 +26,13 @@ namespace Assets._Project.Develop.Runtime.UI.Menu
 
         private void PressDigits()
         {
+            DigitsClicked?.Invoke();
             Debug.Log("Нажата кнопка цифр");
         }
 
         private void PressLetters()
         {
+            LettersClicked?.Invoke();
             Debug.Log("Нажата кнопка букв");
         }
     }

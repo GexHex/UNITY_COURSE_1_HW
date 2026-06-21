@@ -1,6 +1,5 @@
 ﻿using Assets._Project.Develop.Runtime.Infrastructure;
 using Assets._Project.Develop.Runtime.Infrastructure.DI;
-using Assets._Project.Develop.Runtime.Utilities.ConfigsManagment;
 using Assets._Project.Develop.Runtime.Utilities.CoroutinesManagment;
 using Assets._Project.Develop.Runtime.Utilities.SceneManagment;
 using System;
@@ -14,7 +13,6 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Infrastructure
     {
         private DIContainer _container;
         private GameplayInputArgs _inputArgs;
-        private LevelConfig _levelConfig;
         private GameplayCycle _gameCycle;
 
         public override void ProcessRegistrations(DIContainer container, IInputSceneArgs sceneArgs)
@@ -24,7 +22,7 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Infrastructure
             if (sceneArgs is not GameplayInputArgs gameplayInputArgs)
                 throw new ArgumentException($"{nameof(sceneArgs)} is not match with {typeof(GameplayInputArgs)} type");
 
-            _inputArgs = gameplayInputArgs;  //!!!!!!
+            _inputArgs = gameplayInputArgs;          
 
             GameplayContextRegistrations.Process(_container, _inputArgs);
         }
@@ -33,19 +31,18 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Infrastructure
         {
             Debug.Log("Инициализация геймплейной сцены");
 
-            _levelConfig = _container.Resolve<ConfigsProviderService>().GetConfig<LevelConfig>();
+            _gameCycle = _container.Resolve<GameplayCycle>();
+
+            _gameCycle.GameCycleEnded += ChangeLevel;
 
             yield break;
         }
 
         public override void Run()
         {
-            Debug.Log("Старт геймплейной сцены");            
+            Debug.Log("Старт геймплейной сцены");
 
-            _gameCycle = new (_container, _inputArgs, _levelConfig);
-            _gameCycle.GameCycleEnded += ChangeLevel;            
-
-            _container.Resolve<ICoroutinesPerformer>().StartPerform(_gameCycle.Launch());
+            _container.Resolve<ICoroutinesPerformer>().StartPerform(_gameCycle.Launch());           
         }    
 
         private void Update()
@@ -66,7 +63,7 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Infrastructure
         {
             SceneSwitcherService sceneSwitcherService = _container.Resolve<SceneSwitcherService>();
             ICoroutinesPerformer coroutinesPerformer = _container.Resolve<ICoroutinesPerformer>();
-            coroutinesPerformer.StartPerform(sceneSwitcherService.ProcessSwitchTo(Scenes.MainMenu, gameplayInputArgs));
+            coroutinesPerformer.StartPerform(sceneSwitcherService.ProcessSwitchTo(Scenes.MainMenu, _inputArgs));
         }
     }
 }

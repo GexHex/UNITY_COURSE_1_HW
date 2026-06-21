@@ -1,9 +1,9 @@
-﻿using Assets._Project.Develop.Runtime.Gameplay.Infrastructure;
-using Assets._Project.Develop.Runtime.Infrastructure;
+﻿using Assets._Project.Develop.Runtime.Infrastructure;
 using Assets._Project.Develop.Runtime.Infrastructure.DI;
-using Assets._Project.Develop.Runtime.UI.Wrappers;
+using Assets._Project.Develop.Runtime.UI.Menu;
 using Assets._Project.Develop.Runtime.Utilities.CoroutinesManagment;
 using Assets._Project.Develop.Runtime.Utilities.SceneManagment;
+using Assets._Project.Develop.Runtime.Utilities.UI;
 using System.Collections;
 using UnityEngine;
 
@@ -11,23 +11,11 @@ namespace Assets._Project.Develop.Runtime.Meta.Infrastructure
 {
     public class MainMenuBootstrap : SceneBootstrap
     {
-        [SerializeField] private UIButtonWrapper _digits;
-        [SerializeField] private UIButtonWrapper _letters;
-        private GameplayInputArgs _inputArgs;
+        [SerializeField] private UIMainMenu _uiMainMenu;
+
+        private GameModeChooseService _gameModeChooseService;
 
         private DIContainer _container;
-
-        private void Awake()
-        {
-            _digits.Clicked += PressDigits;
-            _letters.Clicked += PressLetters;
-        }
-
-        private void OnDestroy()
-        {
-            _digits.Clicked -= PressDigits;
-            _letters.Clicked -= PressLetters;
-        }
 
         public override void ProcessRegistrations(DIContainer container, IInputSceneArgs sceneArgs = null)
         {
@@ -38,7 +26,14 @@ namespace Assets._Project.Develop.Runtime.Meta.Infrastructure
 
         public override IEnumerator Initialize()
         {
-            Debug.Log("Инициализация сцены меню");
+            Debug.Log("Инициализация сцены меню");         
+
+            _gameModeChooseService = _container.Resolve<GameModeChooseService>();
+
+            _uiMainMenu.DigitsClicked += _gameModeChooseService.SelectDigits;
+            _uiMainMenu.LettersClicked += _gameModeChooseService.SelectLetters;
+
+            _gameModeChooseService.GameModeSelected += ChangeLevel;
 
             yield break;
         }
@@ -48,20 +43,13 @@ namespace Assets._Project.Develop.Runtime.Meta.Infrastructure
             Debug.Log("Старт сцены меню");
         }
 
-        private void PressDigits()
+        private void OnDestroy()
         {
-            Debug.Log("Нажата кнопка цифр");
+            if (_gameModeChooseService == null)
+                return;
 
-            _inputArgs = new(true);
-            ChangeLevel(_inputArgs);
-        }
-
-        private void PressLetters()
-        {
-            Debug.Log("Нажата кнопка букв");
-
-            _inputArgs = new(false);
-            ChangeLevel(_inputArgs);
+            _uiMainMenu.DigitsClicked -= _gameModeChooseService.SelectDigits;
+            _uiMainMenu.LettersClicked -= _gameModeChooseService.SelectLetters;
         }
 
         private void ChangeLevel(IInputSceneArgs gameplayInputArgs)

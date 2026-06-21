@@ -66,7 +66,7 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Level
             if (_isUserInputFinish == true)
                 return;
 
-            _userInputService.Update();
+            _userInputService?.Update();
         }
 
         private void OnInputCompleted(List<char> userUnswers)
