@@ -1,7 +1,6 @@
 ﻿using Assets._Project.Develop.Runtime.Infrastructure;
 using Assets._Project.Develop.Runtime.Infrastructure.DI;
 using Assets._Project.Develop.Runtime.UI.Menu;
-using Assets._Project.Develop.Runtime.Utilities.CoroutinesManagment;
 using Assets._Project.Develop.Runtime.Utilities.SceneManagment;
 using Assets._Project.Develop.Runtime.Utilities.UI;
 using System.Collections;
@@ -33,8 +32,6 @@ namespace Assets._Project.Develop.Runtime.Meta.Infrastructure
             _uiMainMenu.DigitsClicked += _gameModeChooseService.SelectDigits;
             _uiMainMenu.LettersClicked += _gameModeChooseService.SelectLetters;
 
-            _gameModeChooseService.GameModeSelected += ChangeLevel;
-
             yield break;
         }
 
@@ -50,13 +47,6 @@ namespace Assets._Project.Develop.Runtime.Meta.Infrastructure
 
             _uiMainMenu.DigitsClicked -= _gameModeChooseService.SelectDigits;
             _uiMainMenu.LettersClicked -= _gameModeChooseService.SelectLetters;
-        }
-
-        private void ChangeLevel(IInputSceneArgs gameplayInputArgs)
-        {
-            SceneSwitcherService sceneSwitcherService = _container.Resolve<SceneSwitcherService>();
-            ICoroutinesPerformer coroutinesPerformer = _container.Resolve<ICoroutinesPerformer>();
-            coroutinesPerformer.StartPerform(sceneSwitcherService.ProcessSwitchTo(Scenes.Gameplay, gameplayInputArgs));
         }
     }
 }

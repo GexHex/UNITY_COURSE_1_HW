@@ -1,5 +1,5 @@
 using Assets._Project.Develop.Runtime.Gameplay.Infrastructure;
-using Assets._Project.Develop.Runtime.Infrastructure.DI;
+using Assets._Project.Develop.Runtime.Utilities.CoroutinesManagment;
 using Assets._Project.Develop.Runtime.Utilities.Generators;
 using Assets._Project.Develop.Runtime.Utilities.SceneManagment;
 using Assets._Project.Develop.Runtime.Utilities.UserInput;
@@ -13,13 +13,15 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Level
     public class GameplayCycle : IDisposable
     {
         public Action<GameplayInputArgs> GameCycleEnded;
-        
+       
+        private readonly SceneSwitcherService _sceneSwitcherService;
+        private readonly ICoroutinesPerformer _coroutinesPerformer;
+
         RandomGeneratorService _randomGeneratorService;
         UserInputService _userInputService;
 
         private GameMode _gameMode;
 
-        private DIContainer _container;
         private GameplayInputArgs _inputArgs;
         private LevelConfig _levelConfig;
 
@@ -30,23 +32,28 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Level
         private int _answerLength = 5;
 
 
-        public GameplayCycle(DIContainer container, IInputSceneArgs sceneArgs, LevelConfig levelConfig)
+        public GameplayCycle(
+            ICoroutinesPerformer coroutinesPerformer,
+            IInputSceneArgs sceneArgs,
+            LevelConfig levelConfig,
+            RandomGeneratorService randomGeneratorService,
+            UserInputService userInputService,
+            SceneSwitcherService sceneSwitcherService)
         {
-            _container = container;
+            _coroutinesPerformer = coroutinesPerformer;
             _inputArgs = (GameplayInputArgs)sceneArgs;
             _levelConfig = levelConfig;
+            _randomGeneratorService = randomGeneratorService;
+            _userInputService = userInputService;
+            _sceneSwitcherService = sceneSwitcherService;
         }
 
         public IEnumerator Launch()
         {
-            _randomGeneratorService = _container.Resolve<RandomGeneratorService>();
-            _userInputService = _container.Resolve<UserInputService>();
-
             _gameMode = new();
 
             _gameMode.Win += OnGameModeWin;
             _gameMode.Defeat += OnGameModeDefeat;
-
             _userInputService.InputCompleted += OnInputCompleted;
 
             _generateRightAnswers = _randomGeneratorService.GenerateRightAnswers(_inputArgs.IsDigits, _levelConfig, _answerLength);
@@ -93,7 +100,7 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Level
 
         private void OnGameModeEnded()
         {
-            GameCycleEnded?.Invoke(_inputArgs);
+            _coroutinesPerformer.StartPerform(_sceneSwitcherService.ProcessSwitchTo(Scenes.MainMenu, _inputArgs));
 
             _gameMode.Win -= OnGameModeWin;
             _gameMode.Defeat -= OnGameModeDefeat;
@@ -102,7 +109,9 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Level
 
         public void Dispose()
         {
-            OnGameModeEnded();
+            _gameMode.Win -= OnGameModeWin;
+            _gameMode.Defeat -= OnGameModeDefeat;            
+            _userInputService.InputCompleted -= OnInputCompleted;
         }
     }
 }

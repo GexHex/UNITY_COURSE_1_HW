@@ -1,7 +1,9 @@
 ﻿using Assets._Project.Develop.Runtime.Gameplay.Level;
 using Assets._Project.Develop.Runtime.Infrastructure.DI;
 using Assets._Project.Develop.Runtime.Utilities.ConfigsManagment;
+using Assets._Project.Develop.Runtime.Utilities.CoroutinesManagment;
 using Assets._Project.Develop.Runtime.Utilities.Generators;
+using Assets._Project.Develop.Runtime.Utilities.SceneManagment;
 using Assets._Project.Develop.Runtime.Utilities.UserInput;
 using UnityEngine;
 
@@ -44,7 +46,15 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Infrastructure
 
             LevelConfig levelConfig = c.Resolve<ConfigsProviderService>().GetConfig<LevelConfig>();
 
-            return new GameplayCycle(c, args, levelConfig);
+            RandomGeneratorService randomGeneratorService = c.Resolve<RandomGeneratorService>();
+
+            UserInputService userInputService = c.Resolve<UserInputService>();
+
+            SceneSwitcherService sceneSwitcherService = c.Resolve<SceneSwitcherService>();
+
+            ICoroutinesPerformer coroutinesPerformer = c.Resolve<ICoroutinesPerformer>();
+
+            return new GameplayCycle(coroutinesPerformer, args, levelConfig, randomGeneratorService, userInputService, sceneSwitcherService);
         }
     }
 }

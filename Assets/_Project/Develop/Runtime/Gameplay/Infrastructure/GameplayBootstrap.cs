@@ -33,8 +33,6 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Infrastructure
 
             _gameCycle = _container.Resolve<GameplayCycle>();
 
-            _gameCycle.GameCycleEnded += ChangeLevel;
-
             yield break;
         }
 
@@ -52,18 +50,7 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Infrastructure
 
         private void OnDestroy()
         {
-            if (_gameCycle != null)
-            {
-                _gameCycle.GameCycleEnded -= ChangeLevel;
-                _gameCycle.Dispose();
-            }
-        }
-
-        private void ChangeLevel(IInputSceneArgs gameplayInputArgs)
-        {
-            SceneSwitcherService sceneSwitcherService = _container.Resolve<SceneSwitcherService>();
-            ICoroutinesPerformer coroutinesPerformer = _container.Resolve<ICoroutinesPerformer>();
-            coroutinesPerformer.StartPerform(sceneSwitcherService.ProcessSwitchTo(Scenes.MainMenu, _inputArgs));
+            _gameCycle.Dispose();
         }
     }
 }

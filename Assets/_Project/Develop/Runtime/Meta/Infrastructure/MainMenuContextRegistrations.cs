@@ -1,4 +1,6 @@
 ﻿using Assets._Project.Develop.Runtime.Infrastructure.DI;
+using Assets._Project.Develop.Runtime.Utilities.CoroutinesManagment;
+using Assets._Project.Develop.Runtime.Utilities.SceneManagment;
 using Assets._Project.Develop.Runtime.Utilities.UI;
 using UnityEngine;
 
@@ -15,7 +17,11 @@ namespace Assets._Project.Develop.Runtime.Meta.Infrastructure
 
         private static GameModeChooseService CreateGameModeChooseService(DIContainer c)
         {
-            return new GameModeChooseService();
+            SceneSwitcherService sceneSwitcherService = c.Resolve<SceneSwitcherService>();
+
+            ICoroutinesPerformer iCoroutinesPerformer = c.Resolve<ICoroutinesPerformer>();
+
+            return new GameModeChooseService(sceneSwitcherService, iCoroutinesPerformer);
         }
     }
 }
