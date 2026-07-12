@@ -2,6 +2,7 @@
 using Assets._Project.Develop.Runtime.Gameplay.Level;
 using Assets._Project.Develop.Runtime.Infrastructure.DI;
 using Assets._Project.Develop.Runtime.Meta.Features.ScoreCounter;
+using Assets._Project.Develop.Runtime.Meta.Features.Wallet;
 using Assets._Project.Develop.Runtime.Utilities.ConfigsManagment;
 using Assets._Project.Develop.Runtime.Utilities.CoroutinesManagment;
 using Assets._Project.Develop.Runtime.Utilities.DataManagment.DataProviders;
@@ -44,7 +45,9 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Infrastructure
 
             GameplayInputArgs args = c.Resolve<GameplayInputArgs>();
 
-            LevelConfig levelConfig = c.Resolve<ConfigsProviderService>().GetConfig<LevelConfig>();
+            ConfigsProviderService configsProviderService = c.Resolve<ConfigsProviderService>();
+
+            LevelConfig levelConfig = configsProviderService.GetConfig<LevelConfig>();
 
             RandomGeneratorService randomGeneratorService = c.Resolve<RandomGeneratorService>();
 
@@ -56,15 +59,20 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Infrastructure
 
             StatsService statsService = c.Resolve<StatsService>();
 
+            WalletService walletService = c.Resolve<WalletService>();
+
             PlayerDataProvider playerDataProvider = c.Resolve<PlayerDataProvider>();
 
-            return new GameplayCycle(coroutinesPerformer,
+            return new GameplayCycle(
+                coroutinesPerformer,
                 args,
                 levelConfig,
                 randomGeneratorService,
                 userInputService,
                 sceneSwitcherService,
                 statsService,
+                walletService,
+                configsProviderService,
                 playerDataProvider);
         }
     }

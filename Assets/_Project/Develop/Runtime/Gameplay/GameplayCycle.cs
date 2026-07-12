@@ -2,6 +2,7 @@ using Assets._Project.Develop.Runtime.Configs.Meta.Level;
 using Assets._Project.Develop.Runtime.Gameplay.Infrastructure;
 using Assets._Project.Develop.Runtime.Meta.Features.ScoreCounter;
 using Assets._Project.Develop.Runtime.Meta.Features.Wallet;
+using Assets._Project.Develop.Runtime.Utilities.ConfigsManagment;
 using Assets._Project.Develop.Runtime.Utilities.CoroutinesManagment;
 using Assets._Project.Develop.Runtime.Utilities.DataManagment.DataProviders;
 using Assets._Project.Develop.Runtime.Utilities.Generators;
@@ -16,12 +17,15 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Level
 {
     public class GameplayCycle : IDisposable
     {
-        private RandomGeneratorService _randomGeneratorService;
-        private PlayerDataProvider _playerDataProvider;
-        private UserInputService _userInputService;
-        private StatsService _statService;
+        private readonly RandomGeneratorService _randomGeneratorService;
+        private readonly PlayerDataProvider _playerDataProvider;
+        private readonly UserInputService _userInputService;
+        private readonly StatsService _statService;
+        private readonly WalletService _walletService;
+        private readonly ConfigsProviderService _configsProviderService;
         private readonly ICoroutinesPerformer _coroutinesPerformer;
         private readonly SceneSwitcherService _sceneSwitcherService;
+
         private GameMode _gameMode;
         private GameplayInputArgs _inputArgs;
         private LevelConfig _levelConfig;
@@ -38,6 +42,8 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Level
              UserInputService userInputService,
              SceneSwitcherService sceneSwitcherService,
              StatsService statService,
+             WalletService walletService,
+             ConfigsProviderService configsProviderService,
              PlayerDataProvider playerDataProvider)
         {
             _coroutinesPerformer = coroutinesPerformer;
@@ -47,6 +53,8 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Level
             _userInputService = userInputService;
             _sceneSwitcherService = sceneSwitcherService;
             _statService = statService;
+            _walletService = walletService;
+            _configsProviderService = configsProviderService;
             _playerDataProvider = playerDataProvider;
         }
 
@@ -65,7 +73,7 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Level
             if (_inputArgs.IsDigits == true)
                 _userInputService.StartDigitsInput();
             else
-                _userInputService.StartLettersInput();            
+                _userInputService.StartLettersInput();
 
             yield return null;
         }
@@ -78,10 +86,10 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Level
             _userInputService?.Update();
         }
 
-        private void OnInputCompleted(List<char> userUnswers)
+        private void OnInputCompleted(List<char> userAnswers)
         {
             _isUserInputFinish = true;
-            _userAnswers = userUnswers;
+            _userAnswers = userAnswers;
 
             _gameMode.CheckResult(_generateRightAnswers, _userAnswers);
         }
@@ -93,7 +101,12 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Level
             Debug.Log("---------------------------------------");
 
             _statService.AddLoss();
-            _statService.SpendCurrency(CurrencyTypes.Gold);
+
+            int goldToLose = _configsProviderService.GetConfig<GameBalanceConfig>().GoldToLose;
+            if (_walletService.Enough(CurrencyTypes.Gold, goldToLose))
+                _walletService.Spend(CurrencyTypes.Gold, goldToLose);
+            else
+                Debug.Log("Нет золота для удаления!");
 
             OnGameModeEnded();
         }
@@ -105,14 +118,16 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Level
             Debug.Log("---------------------------------------");
 
             _statService.AddWin();
-            _statService.AddCurrency(CurrencyTypes.Gold);
+
+            int goldToWin = _configsProviderService.GetConfig<GameBalanceConfig>().GoldToWin;
+            _walletService.Add(CurrencyTypes.Gold, goldToWin);
 
             OnGameModeEnded();
         }
 
         private void OnGameModeEnded()
         {
-            _coroutinesPerformer.StartPerform(EndGameProcess());            
+            _coroutinesPerformer.StartPerform(EndGameProcess());
 
             _gameMode.Win -= OnGameModeWin;
             _gameMode.Defeat -= OnGameModeDefeat;
@@ -130,9 +145,15 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Level
 
         public void Dispose()
         {
-            _gameMode.Win -= OnGameModeWin;
-            _gameMode.Defeat -= OnGameModeDefeat;
-            _userInputService.InputCompleted -= OnInputCompleted;
+            if (_gameMode != null)
+            {
+                _gameMode.Win -= OnGameModeWin;
+                _gameMode.Defeat -= OnGameModeDefeat;
+            }
+            if (_userInputService != null)
+            {
+                _userInputService.InputCompleted -= OnInputCompleted;
+            }
         }
     }
 }

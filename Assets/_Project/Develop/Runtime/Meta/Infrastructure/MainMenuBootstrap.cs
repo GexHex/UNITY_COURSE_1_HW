@@ -1,6 +1,6 @@
 ﻿using Assets._Project.Develop.Runtime.Infrastructure;
 using Assets._Project.Develop.Runtime.Infrastructure.DI;
-using Assets._Project.Develop.Runtime.Meta.Features.ScoreCounter;
+using Assets._Project.Develop.Runtime.Meta.Features.Stats;
 using Assets._Project.Develop.Runtime.UI.Menu;
 using Assets._Project.Develop.Runtime.Utilities.SceneManagment;
 using Assets._Project.Develop.Runtime.Utilities.UI;
@@ -14,7 +14,7 @@ namespace Assets._Project.Develop.Runtime.Meta.Infrastructure
         [SerializeField] private UIMainMenu _uiMainMenu;
 
         private DIContainer _container;
-        private StatsService _statsService;
+        private StatsController _statsController;
         private GameModeChooseService _gameModeChooseService;
 
         public override void ProcessRegistrations(DIContainer container, IInputSceneArgs sceneArgs = null)
@@ -33,7 +33,7 @@ namespace Assets._Project.Develop.Runtime.Meta.Infrastructure
             _uiMainMenu.DigitsClicked += _gameModeChooseService.SelectDigits;
             _uiMainMenu.LettersClicked += _gameModeChooseService.SelectLetters;
 
-            _statsService = _container.Resolve<StatsService>();
+            _statsController = _container.Resolve<StatsController>();
 
             yield break;
         }
@@ -42,12 +42,12 @@ namespace Assets._Project.Develop.Runtime.Meta.Infrastructure
         {
             Debug.Log("Старт сцены меню");
 
-            _statsService.Run();
+            _statsController.ShowStats();
         }     
 
         private void Update()
         {
-            _statsService?.Update();            
+            _statsController?.Update();            
         } 
 
         private void OnDestroy()

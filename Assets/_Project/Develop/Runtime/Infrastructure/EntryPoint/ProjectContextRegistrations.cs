@@ -41,17 +41,14 @@ namespace Assets._Project.Develop.Runtime.Infrastructure.EntryPoint
 
             container.RegisterAsSingle<ISaveLoadSerivce>(CreateSaveLoadService);
 
-            container.RegisterAsSingle(CreateStatsService);
+            container.RegisterAsSingle(CreateStatsService).NonLazy();
         }
 
         private static StatsService CreateStatsService(DIContainer c)
         {
             PlayerDataProvider playerDataProvider = c.Resolve<PlayerDataProvider>();
-            WalletService walletService = c.Resolve<WalletService>();
-            ConfigsProviderService configPrividerService = c.Resolve<ConfigsProviderService>();
-            ICoroutinesPerformer croutinesPerformer = c.Resolve<ICoroutinesPerformer>();
 
-            return new StatsService(playerDataProvider, walletService, configPrividerService, croutinesPerformer);
+            return new StatsService(playerDataProvider);
         }
 
         private static PlayerDataProvider CreatePlayerDataProvider(DIContainer c)
