@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7538671466334454439}
   - component: {fileID: 5756793533834964380}
   m_Layer: 5
-  m_Name: WalletView
+  m_Name: StatsView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

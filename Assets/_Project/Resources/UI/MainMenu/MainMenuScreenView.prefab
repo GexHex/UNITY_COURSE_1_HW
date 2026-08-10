@@ -187,8 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d43428afca50ef4eb31b2332332d1df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <StatsView>k__BackingField: {fileID: 0}
-  <WalletView>k__BackingField: {fileID: 1878433728868284233}
+  <StatsView>k__BackingField: {fileID: 1878433728868284233}
   _resetStatsButton: {fileID: 701919369352906010}
   _digitsButton: {fileID: 7612536615369724735}
   _leterstButton: {fileID: 2289936118858868720}
@@ -942,7 +941,7 @@ PrefabInstance:
     - target: {fileID: 1865570729058155713, guid: 52127d88a20aa9248ba79a3edfd61f50,
         type: 3}
       propertyPath: m_Name
-      value: WalletView
+      value: StatsView
       objectReference: {fileID: 0}
     - target: {fileID: 7538671466334454439, guid: 52127d88a20aa9248ba79a3edfd61f50,
         type: 3}

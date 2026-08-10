@@ -1,5 +1,6 @@
 ﻿using Assets._Project.Develop.Runtime.Meta.Features.Stats;
 using Assets._Project.Develop.Runtime.UI.Core;
+using Assets._Project.Develop.Runtime.UI.Stats;
 using Assets._Project.Develop.Runtime.UI.Wallet;
 using Assets._Project.Develop.Runtime.Utilities.UI;
 using System.Collections.Generic;
@@ -55,18 +56,17 @@ namespace Assets._Project.Develop.Runtime.UI.MainMenu
 
         private void CreateWallet()
         {
-            WalletPresenter walletPresenter = _projectPresentersFactory.CreateWalletPresenter(_screen.WalletView);
+            WalletPresenter walletPresenter = _projectPresentersFactory.CreateWalletPresenter(_screen.StatsView);
 
             _childPresenters.Add(walletPresenter);
         }
 
         private void CreateStats()
         {
-            var targetView = _screen.StatsView != null ? _screen.StatsView : _screen.WalletView;
+            StatsListPresenter StatsPresenter = _projectPresentersFactory.CreateStatsListPresenter(_screen.StatsView);
 
-            var statsPresenter = _projectPresentersFactory.CreateStatsListPresenter(targetView);
-            _childPresenters.Add(statsPresenter);
-        }
+            _childPresenters.Add(StatsPresenter);
+        }      
 
         private void OnResetStatsButtonClicked()
         {

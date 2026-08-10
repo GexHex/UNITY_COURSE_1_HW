@@ -13,8 +13,6 @@ namespace Assets._Project.Develop.Runtime.UI.MainMenu
         public event Action LeterstButtonClicked;
 
         [field: SerializeField] public IconTextListView StatsView { get; private set; }
-        [field: SerializeField] public IconTextListView WalletView { get; private set; }
-
 
         [SerializeField] private Button _resetStatsButton;
         [SerializeField] private Button _digitsButton;

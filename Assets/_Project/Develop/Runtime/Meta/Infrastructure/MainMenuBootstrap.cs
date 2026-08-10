@@ -1,7 +1,6 @@
 ﻿using Assets._Project.Develop.Runtime.Infrastructure;
 using Assets._Project.Develop.Runtime.Infrastructure.DI;
 using Assets._Project.Develop.Runtime.Meta.Features.Stats;
-using Assets._Project.Develop.Runtime.UI.Menu;
 using Assets._Project.Develop.Runtime.Utilities.SceneManagment;
 using Assets._Project.Develop.Runtime.Utilities.UI;
 using System.Collections;
@@ -11,8 +10,6 @@ namespace Assets._Project.Develop.Runtime.Meta.Infrastructure
 {
     public class MainMenuBootstrap : SceneBootstrap
     {
-        [SerializeField] private UIMainMenu _uiMainMenu;
-
         private DIContainer _container;
         private StatsController _statsController;
         private GameModeChooseService _gameModeChooseService;
@@ -28,10 +25,7 @@ namespace Assets._Project.Develop.Runtime.Meta.Infrastructure
         {
             Debug.Log("Инициализация сцены меню");
 
-            _gameModeChooseService = _container.Resolve<GameModeChooseService>();
-
-            _uiMainMenu.DigitsClicked += _gameModeChooseService.SelectDigits;
-            _uiMainMenu.LettersClicked += _gameModeChooseService.SelectLetters;
+            _gameModeChooseService = _container.Resolve<GameModeChooseService>();            
 
             _statsController = _container.Resolve<StatsController>();
 
@@ -53,10 +47,7 @@ namespace Assets._Project.Develop.Runtime.Meta.Infrastructure
         private void OnDestroy()
         {
             if (_gameModeChooseService == null)
-                return;
-            
-            _uiMainMenu.DigitsClicked -= _gameModeChooseService.SelectDigits;
-            _uiMainMenu.LettersClicked -= _gameModeChooseService.SelectLetters;
+                return;  
         }
     }
 }
