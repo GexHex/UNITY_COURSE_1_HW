@@ -2,22 +2,17 @@
 using Assets._Project.Develop.Runtime.Utilities.Conditions;
 using Assets._Project.Develop.Runtime.Utilities.Reactive;
 
-namespace Assets._Project.Develop.Runtime.Gameplay.Features._test
-{
-    public class EnergyComponent : IEntityComponent
-    {
-        public ReactiveVariable<int> Value;
-    }
-
+namespace Assets._Project.Develop.Runtime.Gameplay.Features.Teleport
+{  
     public class RunTeleportEvent : IEntityComponent
     {
         public ReactiveEvent Value;
     }
 
-    public class StatsTimerEvent : IEntityComponent
+    public class CompletedTeleportEvent : IEntityComponent
     {
-        public ReactiveEvent Value;
-    }
+        public ReactiveEvent Value;    
+    }   
 
     public class CanTeleport : IEntityComponent
     {

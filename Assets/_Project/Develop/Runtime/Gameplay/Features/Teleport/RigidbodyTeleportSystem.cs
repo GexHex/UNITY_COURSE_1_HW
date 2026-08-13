@@ -6,21 +6,24 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Assets._Project.Develop.Runtime.Gameplay.Features._test
+namespace Assets._Project.Develop.Runtime.Gameplay.Features.Teleport
 {
     public class RigidbodyTeleportSystem : IInitializableSystem, IDisposableSystem, IUpdatableSystem
-    {        
+    {
         private Rigidbody _rigidbody;
         private ReactiveEvent _runTeleportEvent;
+        private ReactiveEvent _completedTeleportEvent;
         private ICompositeCondition _canTeleport;
         private float _teleportRadius = 8f;
         private IDisposable _disposable;
+
         private int _debugSegments = 32;
 
         public void OnInit(Entity entity)
-        {            
+        {
             _rigidbody = entity.Rigidbody;
             _runTeleportEvent = entity.RunTeleportEvent;
+            _completedTeleportEvent = entity.CompletedTeleportEvent;
             _canTeleport = entity.CanTeleport;
 
             _disposable = _runTeleportEvent.Subscribe(Teleport);
@@ -43,9 +46,11 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Features._test
             Vector2 offset = Random.insideUnitCircle * _teleportRadius;
             Vector3 spawnPosition = center + new Vector3(offset.x, 0, offset.y);
 
-            _rigidbody.transform.position = spawnPosition;
+            _rigidbody.position = spawnPosition;
 
             Physics.SyncTransforms();  //!!!
+
+            _completedTeleportEvent.Invoke();
         }
 
         public void OnUpdate(float deltaTime)

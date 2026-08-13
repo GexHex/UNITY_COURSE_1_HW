@@ -1,8 +1,8 @@
 ﻿using Assets._Project.Develop.Runtime.Gameplay.EntitiesCore.Mono;
-using Assets._Project.Develop.Runtime.Gameplay.Features._test;
 using Assets._Project.Develop.Runtime.Gameplay.Features.ApplyDamage;
 using Assets._Project.Develop.Runtime.Gameplay.Features.AreaDamage;
 using Assets._Project.Develop.Runtime.Gameplay.Features.ContactTakeDamage;
+using Assets._Project.Develop.Runtime.Gameplay.Features.Energy;
 using Assets._Project.Develop.Runtime.Gameplay.Features.LifeCycle;
 using Assets._Project.Develop.Runtime.Gameplay.Features.Sensors;
 using Assets._Project.Develop.Runtime.Gameplay.Features.Teleport;
@@ -44,11 +44,13 @@ namespace Assets._Project.Develop.Runtime.Gameplay.EntitiesCore
                 .AddDeathProcessCurrentTime()
                 .AddTakeDamageRequest()
                 .AddTakeDamageEvent()
+                .AddIsPlayer()
 
                 .AddAreaDamageValue(new ReactiveVariable<float>(25))
                 .AddAreaDamageRadius(new ReactiveVariable<float>(5))
                 .AddAreaDamageTargetsMask(1 << LayerMask.NameToLayer("Characters"))
                 .AddAreaDamageCollidersBuffer(new Buffer<Collider>(32))
+                .AddAreaDamageTargetsBuffer(new Buffer<Entity>(32))
                 .AddRunAreaDamageEvent();
 
             ICompositeCondition mustDie = new CompositeCondition()
@@ -70,7 +72,6 @@ namespace Assets._Project.Develop.Runtime.Gameplay.EntitiesCore
                 .Add(new FuncCondition(() => entity.InDeathProcess.Value == false))
                 .Add(new FuncCondition(() => entity.Energy.Value >= 10));
 
-
             entity
                 .AddMustDie(mustDie)
                 .AddMustSelfRelease(mustSelfRelease)
@@ -80,19 +81,23 @@ namespace Assets._Project.Develop.Runtime.Gameplay.EntitiesCore
                 .AddFullOfEnergyEvent()
                 .AddRunTeleportEvent()
                 .AddEnergy(new ReactiveVariable<int>(100))
-                .AddStatsTimerEvent();
+                .AddCompletedTeleportEvent();
 
             entity
                 .AddSystem(new ApplyDamageSystem())
-                .AddSystem(new AreaDamageSystem(_collidersRegistryService))
+                .AddSystem(new TakeDamageInfoSystem())
+                .AddSystem(new AreaDamageDetectingSystem())
+                .AddSystem(new AreaDamageTargetsFilterSystem(_collidersRegistryService))
+                .AddSystem(new AreaDamageSystem())
                 .AddSystem(new DeathSystem())
                 .AddSystem(new DisableCollidersOnDeathSystem())
                 .AddSystem(new DeathProcessTimerSystem())
                 .AddSystem(new SelfReleaseSystem(_entitiesLifeContext))
 
                 .AddSystem(new RigidbodyTeleportSystem())
-                .AddSystem(new StatsManagementTimerSystem())
-                .AddSystem(new StatsManagementSystem());
+                .AddSystem(new AreaDamageOnTeleportCompletedSystem())
+                .AddSystem(new SpendEnergyOnTeleportSystem())
+                .AddSystem(new EnergyRecoverySystem());
 
             _entitiesLifeContext.Add(entity);
 
@@ -145,6 +150,7 @@ namespace Assets._Project.Develop.Runtime.Gameplay.EntitiesCore
                 .AddSystem(new BodyContactsEntitiesFilterSystem(_collidersRegistryService))
                 .AddSystem(new DealDamageOnContactSystem())
                 .AddSystem(new ApplyDamageSystem())
+                .AddSystem(new TakeDamageInfoSystem())
                 .AddSystem(new DeathSystem())
                 .AddSystem(new DisableCollidersOnDeathSystem())
                 .AddSystem(new DeathProcessTimerSystem())

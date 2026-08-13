@@ -35,4 +35,9 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Features.AreaDamage
     {
         public ICompositeCondition Value;
     }
+
+    public class AreaDamageTargetsBuffer : IEntityComponent
+    {
+        public Buffer<Entity> Value;
+    }
 }

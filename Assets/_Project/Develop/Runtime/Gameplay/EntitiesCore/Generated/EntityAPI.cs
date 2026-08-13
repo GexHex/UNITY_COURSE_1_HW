@@ -2,69 +2,41 @@ namespace Assets._Project.Develop.Runtime.Gameplay.EntitiesCore
 {
 	public partial class Entity
 	{
-		public Assets._Project.Develop.Runtime.Gameplay.Features._test.EnergyComponent EnergyC => GetComponent<Assets._Project.Develop.Runtime.Gameplay.Features._test.EnergyComponent>();
-
-		public Assets._Project.Develop.Runtime.Utilities.Reactive.ReactiveVariable<System.Int32> Energy => EnergyC.Value;
-
-		public Assets._Project.Develop.Runtime.Gameplay.EntitiesCore.Entity AddEnergy()
-		{
-			return AddComponent(new Assets._Project.Develop.Runtime.Gameplay.Features._test.EnergyComponent() { Value = new Assets._Project.Develop.Runtime.Utilities.Reactive.ReactiveVariable<System.Int32>() }); 
-		}
-
-		public Assets._Project.Develop.Runtime.Gameplay.EntitiesCore.Entity AddEnergy(Assets._Project.Develop.Runtime.Utilities.Reactive.ReactiveVariable<System.Int32> value)
-		{
-			return AddComponent(new Assets._Project.Develop.Runtime.Gameplay.Features._test.EnergyComponent() {Value = value}); 
-		}
-
-		public Assets._Project.Develop.Runtime.Gameplay.Features._test.RunTeleportEvent RunTeleportEventC => GetComponent<Assets._Project.Develop.Runtime.Gameplay.Features._test.RunTeleportEvent>();
+		public Assets._Project.Develop.Runtime.Gameplay.Features.Teleport.RunTeleportEvent RunTeleportEventC => GetComponent<Assets._Project.Develop.Runtime.Gameplay.Features.Teleport.RunTeleportEvent>();
 
 		public Assets._Project.Develop.Runtime.Utilities.Reactive.ReactiveEvent RunTeleportEvent => RunTeleportEventC.Value;
 
 		public Assets._Project.Develop.Runtime.Gameplay.EntitiesCore.Entity AddRunTeleportEvent()
 		{
-			return AddComponent(new Assets._Project.Develop.Runtime.Gameplay.Features._test.RunTeleportEvent() { Value = new Assets._Project.Develop.Runtime.Utilities.Reactive.ReactiveEvent() }); 
+			return AddComponent(new Assets._Project.Develop.Runtime.Gameplay.Features.Teleport.RunTeleportEvent() { Value = new Assets._Project.Develop.Runtime.Utilities.Reactive.ReactiveEvent() }); 
 		}
 
 		public Assets._Project.Develop.Runtime.Gameplay.EntitiesCore.Entity AddRunTeleportEvent(Assets._Project.Develop.Runtime.Utilities.Reactive.ReactiveEvent value)
 		{
-			return AddComponent(new Assets._Project.Develop.Runtime.Gameplay.Features._test.RunTeleportEvent() {Value = value}); 
+			return AddComponent(new Assets._Project.Develop.Runtime.Gameplay.Features.Teleport.RunTeleportEvent() {Value = value}); 
 		}
 
-		public Assets._Project.Develop.Runtime.Gameplay.Features._test.StatsTimerEvent StatsTimerEventC => GetComponent<Assets._Project.Develop.Runtime.Gameplay.Features._test.StatsTimerEvent>();
+		public Assets._Project.Develop.Runtime.Gameplay.Features.Teleport.CompletedTeleportEvent CompletedTeleportEventC => GetComponent<Assets._Project.Develop.Runtime.Gameplay.Features.Teleport.CompletedTeleportEvent>();
 
-		public Assets._Project.Develop.Runtime.Utilities.Reactive.ReactiveEvent StatsTimerEvent => StatsTimerEventC.Value;
+		public Assets._Project.Develop.Runtime.Utilities.Reactive.ReactiveEvent CompletedTeleportEvent => CompletedTeleportEventC.Value;
 
-		public Assets._Project.Develop.Runtime.Gameplay.EntitiesCore.Entity AddStatsTimerEvent()
+		public Assets._Project.Develop.Runtime.Gameplay.EntitiesCore.Entity AddCompletedTeleportEvent()
 		{
-			return AddComponent(new Assets._Project.Develop.Runtime.Gameplay.Features._test.StatsTimerEvent() { Value = new Assets._Project.Develop.Runtime.Utilities.Reactive.ReactiveEvent() }); 
+			return AddComponent(new Assets._Project.Develop.Runtime.Gameplay.Features.Teleport.CompletedTeleportEvent() { Value = new Assets._Project.Develop.Runtime.Utilities.Reactive.ReactiveEvent() }); 
 		}
 
-		public Assets._Project.Develop.Runtime.Gameplay.EntitiesCore.Entity AddStatsTimerEvent(Assets._Project.Develop.Runtime.Utilities.Reactive.ReactiveEvent value)
+		public Assets._Project.Develop.Runtime.Gameplay.EntitiesCore.Entity AddCompletedTeleportEvent(Assets._Project.Develop.Runtime.Utilities.Reactive.ReactiveEvent value)
 		{
-			return AddComponent(new Assets._Project.Develop.Runtime.Gameplay.Features._test.StatsTimerEvent() {Value = value}); 
+			return AddComponent(new Assets._Project.Develop.Runtime.Gameplay.Features.Teleport.CompletedTeleportEvent() {Value = value}); 
 		}
 
-		public Assets._Project.Develop.Runtime.Gameplay.Features._test.CanTeleport CanTeleportC => GetComponent<Assets._Project.Develop.Runtime.Gameplay.Features._test.CanTeleport>();
+		public Assets._Project.Develop.Runtime.Gameplay.Features.Teleport.CanTeleport CanTeleportC => GetComponent<Assets._Project.Develop.Runtime.Gameplay.Features.Teleport.CanTeleport>();
 
 		public Assets._Project.Develop.Runtime.Utilities.Conditions.ICompositeCondition CanTeleport => CanTeleportC.Value;
 
 		public Assets._Project.Develop.Runtime.Gameplay.EntitiesCore.Entity AddCanTeleport(Assets._Project.Develop.Runtime.Utilities.Conditions.ICompositeCondition value)
 		{
-			return AddComponent(new Assets._Project.Develop.Runtime.Gameplay.Features._test.CanTeleport() {Value = value}); 
-		}
-
-		public Assets._Project.Develop.Runtime.Gameplay.Features.StatsManagement.FullOfEnergyEvent FullOfEnergyEventC => GetComponent<Assets._Project.Develop.Runtime.Gameplay.Features.StatsManagement.FullOfEnergyEvent>();
-
-		public Assets._Project.Develop.Runtime.Utilities.Reactive.ReactiveEvent FullOfEnergyEvent => FullOfEnergyEventC.Value;
-
-		public Assets._Project.Develop.Runtime.Gameplay.EntitiesCore.Entity AddFullOfEnergyEvent()
-		{
-			return AddComponent(new Assets._Project.Develop.Runtime.Gameplay.Features.StatsManagement.FullOfEnergyEvent() { Value = new Assets._Project.Develop.Runtime.Utilities.Reactive.ReactiveEvent() }); 
-		}
-
-		public Assets._Project.Develop.Runtime.Gameplay.EntitiesCore.Entity AddFullOfEnergyEvent(Assets._Project.Develop.Runtime.Utilities.Reactive.ReactiveEvent value)
-		{
-			return AddComponent(new Assets._Project.Develop.Runtime.Gameplay.Features.StatsManagement.FullOfEnergyEvent() {Value = value}); 
+			return AddComponent(new Assets._Project.Develop.Runtime.Gameplay.Features.Teleport.CanTeleport() {Value = value}); 
 		}
 
 		public Assets._Project.Develop.Runtime.Gameplay.Features.Sensors.BodyCollider BodyColliderC => GetComponent<Assets._Project.Develop.Runtime.Gameplay.Features.Sensors.BodyCollider>();
@@ -101,6 +73,13 @@ namespace Assets._Project.Develop.Runtime.Gameplay.EntitiesCore
 		public Assets._Project.Develop.Runtime.Gameplay.EntitiesCore.Entity AddContactEntitiesBuffer(Assets._Project.Develop.Runtime.Utilities.Buffer<Assets._Project.Develop.Runtime.Gameplay.EntitiesCore.Entity> value)
 		{
 			return AddComponent(new Assets._Project.Develop.Runtime.Gameplay.Features.Sensors.ContactEntitiesBuffer() {Value = value}); 
+		}
+
+		public Assets._Project.Develop.Runtime.Gameplay.Features.Player.IsPlayer IsPlayerC => GetComponent<Assets._Project.Develop.Runtime.Gameplay.Features.Player.IsPlayer>();
+
+		public Assets._Project.Develop.Runtime.Gameplay.EntitiesCore.Entity AddIsPlayer()
+		{
+			return AddComponent(new Assets._Project.Develop.Runtime.Gameplay.Features.Player.IsPlayer() ); 
 		}
 
 		public Assets._Project.Develop.Runtime.Gameplay.Features.MovementFeature.MoveDirection MoveDirectionC => GetComponent<Assets._Project.Develop.Runtime.Gameplay.Features.MovementFeature.MoveDirection>();
@@ -293,6 +272,34 @@ namespace Assets._Project.Develop.Runtime.Gameplay.EntitiesCore
 			return AddComponent(new Assets._Project.Develop.Runtime.Gameplay.Features.LifeCycle.DisableCollidersOnDeath() {Value = value}); 
 		}
 
+		public Assets._Project.Develop.Runtime.Gameplay.Features.Energy.EnergyComponent EnergyC => GetComponent<Assets._Project.Develop.Runtime.Gameplay.Features.Energy.EnergyComponent>();
+
+		public Assets._Project.Develop.Runtime.Utilities.Reactive.ReactiveVariable<System.Int32> Energy => EnergyC.Value;
+
+		public Assets._Project.Develop.Runtime.Gameplay.EntitiesCore.Entity AddEnergy()
+		{
+			return AddComponent(new Assets._Project.Develop.Runtime.Gameplay.Features.Energy.EnergyComponent() { Value = new Assets._Project.Develop.Runtime.Utilities.Reactive.ReactiveVariable<System.Int32>() }); 
+		}
+
+		public Assets._Project.Develop.Runtime.Gameplay.EntitiesCore.Entity AddEnergy(Assets._Project.Develop.Runtime.Utilities.Reactive.ReactiveVariable<System.Int32> value)
+		{
+			return AddComponent(new Assets._Project.Develop.Runtime.Gameplay.Features.Energy.EnergyComponent() {Value = value}); 
+		}
+
+		public Assets._Project.Develop.Runtime.Gameplay.Features.Energy.FullOfEnergyEvent FullOfEnergyEventC => GetComponent<Assets._Project.Develop.Runtime.Gameplay.Features.Energy.FullOfEnergyEvent>();
+
+		public Assets._Project.Develop.Runtime.Utilities.Reactive.ReactiveEvent FullOfEnergyEvent => FullOfEnergyEventC.Value;
+
+		public Assets._Project.Develop.Runtime.Gameplay.EntitiesCore.Entity AddFullOfEnergyEvent()
+		{
+			return AddComponent(new Assets._Project.Develop.Runtime.Gameplay.Features.Energy.FullOfEnergyEvent() { Value = new Assets._Project.Develop.Runtime.Utilities.Reactive.ReactiveEvent() }); 
+		}
+
+		public Assets._Project.Develop.Runtime.Gameplay.EntitiesCore.Entity AddFullOfEnergyEvent(Assets._Project.Develop.Runtime.Utilities.Reactive.ReactiveEvent value)
+		{
+			return AddComponent(new Assets._Project.Develop.Runtime.Gameplay.Features.Energy.FullOfEnergyEvent() {Value = value}); 
+		}
+
 		public Assets._Project.Develop.Runtime.Gameplay.Features.ContactTakeDamage.BodyContactDamage BodyContactDamageC => GetComponent<Assets._Project.Develop.Runtime.Gameplay.Features.ContactTakeDamage.BodyContactDamage>();
 
 		public Assets._Project.Develop.Runtime.Utilities.Reactive.ReactiveVariable<System.Single> BodyContactDamage => BodyContactDamageC.Value;
@@ -374,6 +381,15 @@ namespace Assets._Project.Develop.Runtime.Gameplay.EntitiesCore
 		public Assets._Project.Develop.Runtime.Gameplay.EntitiesCore.Entity AddCanRunAreaDamage(Assets._Project.Develop.Runtime.Utilities.Conditions.ICompositeCondition value)
 		{
 			return AddComponent(new Assets._Project.Develop.Runtime.Gameplay.Features.AreaDamage.CanRunAreaDamage() {Value = value}); 
+		}
+
+		public Assets._Project.Develop.Runtime.Gameplay.Features.AreaDamage.AreaDamageTargetsBuffer AreaDamageTargetsBufferC => GetComponent<Assets._Project.Develop.Runtime.Gameplay.Features.AreaDamage.AreaDamageTargetsBuffer>();
+
+		public Assets._Project.Develop.Runtime.Utilities.Buffer<Assets._Project.Develop.Runtime.Gameplay.EntitiesCore.Entity> AreaDamageTargetsBuffer => AreaDamageTargetsBufferC.Value;
+
+		public Assets._Project.Develop.Runtime.Gameplay.EntitiesCore.Entity AddAreaDamageTargetsBuffer(Assets._Project.Develop.Runtime.Utilities.Buffer<Assets._Project.Develop.Runtime.Gameplay.EntitiesCore.Entity> value)
+		{
+			return AddComponent(new Assets._Project.Develop.Runtime.Gameplay.Features.AreaDamage.AreaDamageTargetsBuffer() {Value = value}); 
 		}
 
 		public Assets._Project.Develop.Runtime.Gameplay.Features.ApplyDamage.TakeDamageRequest TakeDamageRequestC => GetComponent<Assets._Project.Develop.Runtime.Gameplay.Features.ApplyDamage.TakeDamageRequest>();
