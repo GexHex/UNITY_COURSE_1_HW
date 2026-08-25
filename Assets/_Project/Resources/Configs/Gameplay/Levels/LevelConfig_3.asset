@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eaf17de99e7d514487268282133fb94, type: 3}
+  m_Name: LevelConfig_3
+  m_EditorClassIdentifier: 
+  _stageConfigs:
+  - {fileID: 11400000, guid: 274c2a042134a60499c48fb4acef8511, type: 2}
+  - {fileID: 11400000, guid: 8d8468fdc74de8745a8d1e4953e59eb6, type: 2}
+  - {fileID: 11400000, guid: 6c07696a6592da24b9af91e723c310b3, type: 2}
+  <TowerConfig>k__BackingField: {fileID: 11400000, guid: 5018cbc8fce6b094998022cb12931c46,
+    type: 2}
+  <TowerMaxHealth>k__BackingField: 100
+  <RewardGold>k__BackingField: 80
+  <RestDuration>k__BackingField: 3
+  <ExplosionConfig>k__BackingField: {fileID: 11400000, guid: 717cb2d30e60cd84eac2b347000fe140,
+    type: 2}
+  <MineConfig>k__BackingField: {fileID: 11400000, guid: be2b47d6977a7a946b100ec298ae7c54,
+    type: 2}
