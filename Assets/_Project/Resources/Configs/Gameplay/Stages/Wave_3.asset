@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e7a28e076e150f4c885b3f4931201a5, type: 3}
+  m_Name: Wave_3
+  m_EditorClassIdentifier: 
+  <EnemyConfig>k__BackingField: {fileID: 11400000, guid: 52992f53773c4b94990bee1d5de4cfb8,
+    type: 2}
+  <EnemiesCount>k__BackingField: 10
+  <SpawnDistance>k__BackingField: 14
